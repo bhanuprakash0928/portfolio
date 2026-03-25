@@ -10,7 +10,7 @@ function About() {
         <div className="hero-text">
 
           <span className="badge">
-            MERN | Java | Aspiring Developer
+             Java | Spring Boot | Maven | Aspiring Developer
           </span>
 
           <h1>
@@ -18,9 +18,8 @@ function About() {
           </h1>
 
           <p>
-            Hi there! I create clean and modern web applications 
-            that solve real-world problems. Passionate about building 
-            scalable and efficient solutions.
+           Aspiring software developer with a strong interest in backend development, 
+           skilled in Spring Boot and Maven, and eager to learn and grow.
           </p>
 
           <div className="hero-buttons">

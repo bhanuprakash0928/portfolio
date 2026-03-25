@@ -32,54 +32,54 @@ function Projects() {
             </div>
 
             <div className="project-links">
-              <a href="#">Live Demo</a>
-              <a href="#">GitHub</a>
+              
+              <a href="https://github.com/bhanuprakash0928/k-shopping"  target="_blank">GitHub</a>
             </div>
           </div>
         </div>
 
         {/* Project 2 */}
         <div className="project-card-new">
-          <img src="/project2.png" alt="project" />
+          <img src="/image1.png" alt="project" />
 
           <div className="project-content">
-            <h3>Quiz Application</h3>
+            <h3>Porsonal Potfolio</h3>
             <p>
-              A quiz platform with categories, scoring system, and leaderboard.
+              Responsive and animated portfolio site showcasing resume, projects, and contact information.
             </p>
 
             <div className="tags">
-              <span>Java</span>
-              <span>Spring Boot</span>
-              <span>MySQL</span>
+              <span>React</span>
+              <span>Html</span>
+              <span>css</span>
+              <span>Java Script</span>
             </div>
 
             <div className="project-links">
-              <a href="#">Live Demo</a>
-              <a href="#">GitHub</a>
+             
+              <a href="https://github.com/bhanuprakash0928/portfolio"  target="_blank">GitHub</a>
             </div>
           </div>
         </div>
 
         {/* Project 3 */}
         <div className="project-card-new">
-          <img src="/project3.png" alt="project" />
+          <img src="/image2.png" alt="project" />
 
           <div className="project-content">
-            <h3>Student Management</h3>
+            <h3>Vehical Booking for MBU to verious Destinations</h3>
             <p>
-              CRUD application to manage student records with database integration.
+              Developed a travel planning system that enables users to explore routes, calculate distance, time, and cost for journeys from MBU to various destinations.
             </p>
 
             <div className="tags">
-              <span>React</span>
-              <span>SQL</span>
-              <span>API</span>
+              <span>React JavaScript HTML thylandcss </span>
+              
             </div>
 
             <div className="project-links">
-              <a href="#">Live Demo</a>
-              <a href="#">GitHub</a>
+              <a href="https://quick-ride-parcel.lovable.app/"  target="_blank ">Live Demo</a>
+             
             </div>
           </div>
         </div>
