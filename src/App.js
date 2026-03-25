@@ -8,7 +8,7 @@ import Navbar from "./components/Navbar";
 import About from "./components/About";     // Hero Section (Home)
 import Education from "./components/Education";
 import Skills from "./components/Skills";
-
+import Footer from "./components/Foot";
 import Contact from "./components/Contact";
 import Coding from "./components/Coding";
 

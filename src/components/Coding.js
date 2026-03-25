@@ -16,12 +16,13 @@ function Projects() {
 
         {/* Project 1 */}
         <div className="project-card-new">
-          <img src="/project1.png" alt="project" />
+          <img src="/image.png" alt="project" />
 
           <div className="project-content">
-            <h3>Language Learning App</h3>
+            <h3>KShopping – Smart Online Retail Application</h3>
             <p>
-              A modern web app with quizzes, speech recognition, and progress tracking.
+             KShopping is a full-stack e-commerce web application that enables users to browse products, add items to cart, and place orders easily.
+
             </p>
 
             <div className="tags">

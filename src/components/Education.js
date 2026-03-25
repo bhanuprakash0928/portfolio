@@ -19,7 +19,7 @@ function Education() {
         {/* B.Tech */}
         <div className="edu-card">
           <div className="edu-left">
-            <div className="circle">🏫</div>
+            <div className="circle"></div>
 
             <div>
               <h3>B-Tech in Computer Science Engineering</h3>
@@ -32,19 +32,19 @@ function Education() {
           </div>
 
           <div className="edu-right">
-            <span>2022 - 2026</span>
-            <div className="gpa">GPA: 9.8/10</div>
+            <span>2023 - 2027</span>
+            <div className="gpa">GPA: 8.2/10</div>
           </div>
         </div>
 
         {/* Intermediate */}
         <div className="edu-card active">
           <div className="edu-left">
-            <div className="circle">🏫</div>
+            <div className="circle"></div>
 
             <div>
               <h3>Intermediate</h3>
-              <p className="college">Sai Sri Chaitanya Junior College, Kadapa</p>
+              <p className="college">Sai Sri Chaitanya Junior College, Kurnool</p>
               <p className="desc">
                 Completed MPC with strong academic performance and consistency.
               </p>
@@ -53,18 +53,18 @@ function Education() {
 
           <div className="edu-right">
             <span>2020 - 2022</span>
-            <div className="gpa">GPA: 9.7/10</div>
+            <div className="gpa">GPA: 8.7/10</div>
           </div>
         </div>
 
         {/* SSC */}
         <div className="edu-card">
           <div className="edu-left">
-            <div className="circle">🏫</div>
+            <div className="circle"></div>
 
             <div>
               <h3>SSC</h3>
-              <p className="college">Ravindra Bharathi School, Kadapa</p>
+              <p className="college">Challapalli High School , Jammalamadugu </p>
               <p className="desc">
                 Completed schooling with excellent academic performance.
               </p>
@@ -73,7 +73,7 @@ function Education() {
 
           <div className="edu-right">
             <span>2020</span>
-            <div className="gpa">GPA: 9.8/10</div>
+            <div className="gpa">GPA: 9.2/10</div>
           </div>
         </div>
 
