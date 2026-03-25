@@ -3,6 +3,7 @@ import "./App.css";
 
 import Navbar from "./components/Navbar";
 
+
 // Sections
 import About from "./components/About";     // Hero Section (Home)
 import Education from "./components/Education";
@@ -12,16 +13,18 @@ import Contact from "./components/Contact";
 import Coding from "./components/Coding";
 
 function App() {
+ 
   return (
     <>
-      {/* Navbar */}
+      
+
+      {/* Main Content */}
+      <div className="container">
+        {/* Navbar */}
       <Navbar />
 
       {/* HOME (Hero + All intro sections) */}
       <About />
-
-      {/* Main Content */}
-      <div className="container">
         <Skills />
         <Education />
         
@@ -29,6 +32,7 @@ function App() {
         {/* Important Sections */}
         <Coding />
         <Contact />
+        <Footer />
 
       </div>
     </>
