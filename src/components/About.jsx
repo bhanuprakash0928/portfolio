@@ -24,6 +24,14 @@ function About() {
 
           <div className="hero-buttons">
             <a href="#contact" className="btn">Contact Me →</a>
+
+            <a
+              href="/resume.pdf"
+              download
+              className="btn resume-btn"
+            >
+              Resume
+            </a>
           </div>
 
         </div>
