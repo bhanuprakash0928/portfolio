@@ -1,5 +1,6 @@
 import React from "react";
-
+import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
+import "../styles/Contact.css";
 function Contact() {
   return (
     <section id="contact" className="contact-section reveal-section">
@@ -12,10 +13,28 @@ function Contact() {
       </div>
 
       <div className="contact-buttons">
-        <a href="mailto:ybhanuprakashreddy2004@gmail.com">Email Me</a>
-        <a href="https://github.com/bhanuprakash0928" target="_blank" rel="noreferrer">GitHub</a>
-        <a href="https://www.linkedin.com/in/bhanu-prakash-reddy-1ab924321/" target="_blank" rel="noreferrer">LinkedIn</a>
-      </div>
+
+  <a href="mailto:ybhanuprakashreddy2004@gmail.com">
+    <FaEnvelope /> Email Me
+  </a>
+
+  <a
+    href="https://github.com/bhanuprakash0928"
+    target="_blank"
+    rel="noreferrer"
+  >
+    <FaGithub /> GitHub
+  </a>
+
+  <a
+    href="https://www.linkedin.com/in/bhanu-prakash-reddy-1ab924321/"
+    target="_blank"
+    rel="noreferrer"
+  >
+    <FaLinkedin /> LinkedIn
+  </a>
+
+</div>
     </section>
   );
 }

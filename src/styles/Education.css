@@ -1,0 +1,205 @@
+/* ===========================
+   EDUCATION SECTION
+=========================== */
+
+.education-section{
+
+    padding:90px 8%;
+    background:#f8fbff;
+
+}
+
+.edu-header{
+
+    text-align:center;
+    margin-bottom:60px;
+
+}
+
+.edu-icon{
+
+    width:75px;
+    height:75px;
+
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+
+    color:#fff;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    margin:auto;
+
+    font-size:30px;
+
+    box-shadow:0 10px 30px rgba(37,99,235,.25);
+
+    margin-bottom:20px;
+
+}
+
+.edu-header h2{
+
+    font-size:38px;
+    color:#1f2937;
+    margin-bottom:10px;
+
+}
+
+.edu-header p{
+
+    color:#6b7280;
+    font-size:16px;
+
+}
+
+/* Cards */
+
+.edu-container{
+
+    max-width:1000px;
+    margin:auto;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:25px;
+
+}
+
+.edu-card{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    background:#fff;
+
+    padding:28px;
+
+    border-radius:18px;
+
+    border-left:6px solid #2563eb;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.06);
+
+    transition:.35s;
+
+}
+
+.edu-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 40px rgba(37,99,235,.15);
+
+}
+
+.edu-left{
+
+    display:flex;
+    gap:20px;
+
+    align-items:flex-start;
+
+}
+
+.circle{
+
+    width:16px;
+    height:16px;
+
+    background:#2563eb;
+
+    border-radius:50%;
+
+    margin-top:8px;
+
+}
+
+.edu-left h3{
+
+    font-size:22px;
+    color:#1f2937;
+    margin-bottom:8px;
+
+}
+
+.college{
+
+    color:#2563eb;
+    font-weight:600;
+    margin-bottom:8px;
+
+}
+
+.desc{
+
+    color:#6b7280;
+    line-height:1.7;
+    font-size:15px;
+
+}
+
+.edu-right{
+
+    text-align:right;
+
+}
+
+.edu-right span{
+
+    display:block;
+
+    font-weight:600;
+
+    margin-bottom:10px;
+
+}
+
+.gpa{
+
+    display:inline-block;
+
+    padding:8px 18px;
+
+    border-radius:30px;
+
+    background:#dbeafe;
+
+    color:#2563eb;
+
+    font-weight:600;
+
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+.edu-card{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:20px;
+
+}
+
+.edu-right{
+
+    text-align:left;
+
+}
+
+.edu-header h2{
+
+    font-size:30px;
+
+}
+
+}

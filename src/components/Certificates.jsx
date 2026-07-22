@@ -1,7 +1,16 @@
+import "../styles/Certificates.css";
+
 function Certificates() {
   return (
     <section id="certificates">
-      <h2>Certificates & Achievements</h2>
+      <div className="section-title">
+    <span className="section-tag">Certificates</span>
+    <h2>Certificates & Achievements</h2>
+    <p>
+        Professional certifications and achievements that showcase my learning
+        journey and technical skills.
+    </p>
+</div>
 
       <div className="cert-container">
 

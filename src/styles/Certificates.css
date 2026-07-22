@@ -1,0 +1,113 @@
+/* ===========================
+   CERTIFICATES SECTION
+=========================== */
+
+#certificates{
+    padding:90px 8%;
+    background:#ffffff;
+}
+
+#certificates h2{
+    text-align:center;
+    font-size:38px;
+    color:#1f2937;
+    margin-bottom:50px;
+}
+
+/* Container */
+
+.cert-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+    gap:30px;
+    max-width:1100px;
+    margin:auto;
+}
+
+/* Card */
+
+.cert-card{
+    background:#fff;
+    border-radius:18px;
+    padding:30px;
+    border-top:5px solid #2563eb;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+    transition:.35s;
+}
+
+.cert-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 20px 40px rgba(37,99,235,.18);
+}
+
+/* Icon */
+
+.cert-card::before{
+    content:"🏆";
+    display:block;
+    font-size:40px;
+    margin-bottom:18px;
+}
+
+/* Heading */
+
+.cert-card h3{
+    font-size:24px;
+    color:#1f2937;
+    margin-bottom:15px;
+}
+
+/* Description */
+
+.cert-card p{
+    color:#6b7280;
+    line-height:1.8;
+    margin-bottom:25px;
+    font-size:15px;
+}
+
+/* Button */
+
+.cert-card a{
+    display:inline-block;
+    text-decoration:none;
+    background:#2563eb;
+    color:#fff;
+    padding:12px 24px;
+    border-radius:30px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.cert-card a:hover{
+    background:#1d4ed8;
+    transform:scale(1.05);
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media(max-width:768px){
+
+#certificates{
+    padding:70px 20px;
+}
+
+#certificates h2{
+    font-size:30px;
+}
+
+.cert-container{
+    grid-template-columns:1fr;
+}
+
+.cert-card{
+    padding:25px;
+}
+
+.cert-card h3{
+    font-size:20px;
+}
+
+}

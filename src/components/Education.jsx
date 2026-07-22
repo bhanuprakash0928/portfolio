@@ -1,5 +1,5 @@
 import React from "react";
-
+import "../styles/Education.css";
 function Education() {
   return (
     <section id="education" className="education-section">

@@ -1,0 +1,201 @@
+/* =======================
+   PROJECTS
+======================= */
+
+.projects-section{
+    padding:90px 8%;
+    background:#f8fbff;
+}
+
+.projects-header{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.project-badge{
+    display:inline-block;
+    background:#dbeafe;
+    color:#2563eb;
+    padding:8px 20px;
+    border-radius:30px;
+    font-size:14px;
+    font-weight:600;
+}
+
+.projects-header h2{
+    font-size:38px;
+    margin:15px 0;
+    color:#1f2937;
+}
+
+.projects-header p{
+    color:#6b7280;
+    max-width:650px;
+    margin:auto;
+    line-height:1.8;
+}
+
+/* Grid */
+
+.projects-grid{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+    gap:30px;
+
+}
+
+/* Card */
+
+.project-card{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+}
+
+.project-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 20px 40px rgba(37,99,235,.18);
+
+}
+
+.project-card img{
+
+    width:100%;
+    height:220px;
+    object-fit:cover;
+
+}
+
+/* Content */
+
+.project-content{
+
+    padding:25px;
+
+}
+
+.project-content h3{
+
+    font-size:24px;
+
+    color:#1f2937;
+
+    margin-bottom:15px;
+
+}
+
+.project-content p{
+
+    color:#6b7280;
+
+    line-height:1.7;
+
+    margin-bottom:20px;
+
+}
+
+/* Tags */
+
+.tags{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-bottom:25px;
+
+}
+
+.tags span{
+
+    background:#dbeafe;
+
+    color:#2563eb;
+
+    padding:8px 14px;
+
+    border-radius:20px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+/* Buttons */
+
+.project-links{
+
+    display:flex;
+
+    gap:15px;
+
+}
+
+.project-links a{
+
+    text-decoration:none;
+
+    background:#2563eb;
+
+    color:white;
+
+    padding:10px 22px;
+
+    border-radius:30px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.project-links a:hover{
+
+    background:#1d4ed8;
+
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+.projects-section{
+
+padding:70px 20px;
+
+}
+
+.projects-header h2{
+
+font-size:30px;
+
+}
+
+.project-card img{
+
+height:200px;
+
+}
+
+}
+.project-card-new{
+    transition:.4s ease;
+}
+.project-card-new:hover{
+    transform:translateY(-10px);
+    box-shadow:0 20px 40px rgba(0,0,0,.15);
+}

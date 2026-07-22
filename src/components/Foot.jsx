@@ -1,6 +1,7 @@
 import React from "react";
 import { FaGithub, FaLinkedin, FaEnvelope, FaArrowUp } from "react-icons/fa";
-
+import { Link } from "react-router-dom";
+import "../styles/Footer.css";
 function Footer() {
   return (
     <footer className="footer">
@@ -16,7 +17,7 @@ function Footer() {
         <div>
           <a href="#home">Home</a>
           <a href="#projects">Projects</a>
-          <a href="#gallery">Gallery</a>
+          <Link to="/gallery">Gallery</Link>
           <a href="#contact">Contact</a>
         </div>
 

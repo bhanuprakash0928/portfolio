@@ -1,89 +1,129 @@
 import React from "react";
+import "../styles/Projects.css";
 
 function Projects() {
   return (
-    <section id="projects" className="projects-section">
+    <section id="projects" className="projects-section"  fade-in>
 
-      {/* Header */}
       <div className="projects-header">
-        <span className="badge">Projects</span>
-        <h2>My Work</h2>
-        <p>Some of the projects I have built recently</p>
+        <span className="project-badge">Projects</span>
+        <h2>Featured Projects</h2>
+        <p>
+          Some of the projects I have developed using Java, Spring Boot,
+          React and modern web technologies.
+        </p>
       </div>
 
-      {/* Projects Grid */}
       <div className="projects-grid">
 
         {/* Project 1 */}
-        <div className="project-card-new">
-          <img src="/image.png" alt="project" />
+
+        <div className="project-card">
+
+          <img src="/image.png" alt="KShopping" />
 
           <div className="project-content">
-            <h3>KShopping – Smart Online Retail Application</h3>
-            <p>
-             KShopping is a full-stack e-commerce web application that enables users to browse products, add items to cart, and place orders easily.
 
+            <h3>KShopping</h3>
+
+            <p>
+              A full-stack e-commerce application where users can browse
+              products, add items to cart and place orders securely.
             </p>
 
-           <div className="tags">
-            <span>HTML</span>
-            <span>CSS</span>
-            <span>JavaScript</span>
-            <span>Spring Boot</span>
-            <span>REST API</span>
-          </div>
+            <div className="tags">
+              <span>Java</span>
+              <span>Spring Boot</span>
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+            </div>
 
             <div className="project-links">
-              
-              <a href="https://github.com/bhanuprakash0928/k-shopping"  target="_blank">GitHub</a>
+              <a
+                href="https://github.com/bhanuprakash0928/k-shopping"
+                target="_blank"
+                rel="noreferrer"
+              >
+                GitHub
+              </a>
             </div>
+
           </div>
+
         </div>
 
         {/* Project 2 */}
-        <div className="project-card-new">
-          <img src="/image1.png" alt="project" />
+
+        <div className="project-card">
+
+          <img src="/image1.png" alt="Portfolio" />
 
           <div className="project-content">
-            <h3>Porsonal Potfolio</h3>
+
+            <h3>Personal Portfolio</h3>
+
             <p>
-              Responsive and animated portfolio site showcasing resume, projects, and contact information.
+              A responsive developer portfolio built with React showcasing
+              skills, education, certificates and projects.
             </p>
 
             <div className="tags">
               <span>React</span>
-              <span>Html</span>
-              <span>css</span>
-              <span>Java Script</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
             </div>
 
             <div className="project-links">
-             
-              <a href="https://github.com/bhanuprakash0928/portfolio"  target="_blank">GitHub</a>
+              <a
+                href="https://github.com/bhanuprakash0928/portfolio"
+                target="_blank"
+                rel="noreferrer"
+              >
+                GitHub
+              </a>
             </div>
+
           </div>
+
         </div>
 
         {/* Project 3 */}
-        <div className="project-card-new">
-          <img src="/image2.png" alt="project" />
+
+        <div className="project-card">
+
+          <img src="/image2.png" alt="Vehicle Booking" />
 
           <div className="project-content">
-            <h3>Vehical Booking for MBU to verious Destinations</h3>
+
+            <h3>Vehicle Booking System</h3>
+
             <p>
-              Developed a travel planning system that enables users to explore routes, calculate distance, time, and cost for journeys from MBU to various destinations.
+              Developed a travel planning application that helps users explore
+              routes, calculate travel time, distance and estimated cost.
             </p>
 
             <div className="tags">
-              <span>React JavaScript HTML thylandcss </span>
-              
+              <span>React</span>
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
             </div>
 
             <div className="project-links">
-              <a href="https://quick-ride-parcel.lovable.app/"  target="_blank ">Live Demo</a>
-             
+
+              <a
+                href="https://quick-ride-parcel.lovable.app/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Live Demo
+              </a>
+
             </div>
+
           </div>
+
         </div>
 
       </div>
