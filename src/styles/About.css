@@ -183,3 +183,41 @@ transform:translateY(-3px);
 }
 
 }
+
+
+/* ================= TYPING ANIMATION ================= */
+
+.typing-name{
+    margin-top:10px;
+    margin-bottom:25px;
+}
+
+.typing-name span{
+    display:inline-block;
+    font-size:60px;
+    font-weight:700;
+    color:#2563eb;
+    white-space:nowrap;
+    overflow:hidden;
+    border-right:4px solid #2563eb;
+    width:0;
+    animation:
+        typing 4s steps(28,end) forwards,
+        blink .8s infinite;
+}
+
+@keyframes typing{
+    from{
+        width:0;
+    }
+    to{
+        width:100%;
+    }
+}
+
+@keyframes blink{
+    50%{
+        border-color:transparent;
+    }
+}
+

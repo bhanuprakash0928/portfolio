@@ -11,16 +11,18 @@ function About() {
         <div className="hero-text">
 
           <span className="badge">
-             Java | Spring Boot | Maven | Aspiring Developer
+                Java | Spring Boot | Maven & Data Analytics | Tableau
           </span>
-
           <h1>
-            Welcome to <span>Bhanu Prakash Reddy's</span> Portfolio
+            Hi, I'm <span>Yettapu Bhanu Prakash Reddy</span>
           </h1>
 
           <p>
-           Aspiring software developer with a strong interest in backend development, 
-           skilled in Spring Boot and Maven, and eager to learn and grow.
+           Passionate Computer Science student with hands-on experience in Java,
+            Spring Boot, Maven, SQL, and Tableau. I enjoy developing backend
+            applications and creating interactive data analytics dashboards to solve
+            real-world problems. Currently seeking opportunities to grow as a Java
+            Developer or Data Analyst while continuously enhancing my technical skills.
           </p>
 
           <div className="hero-buttons">
@@ -40,11 +42,17 @@ function About() {
         {/* RIGHT SIDE IMAGE */}
         <div className="hero-image">
           <img src="/profile.png" alt="Profile" />
+
+          
         </div>
 
       </div>
 
+      
+
     </section>
+
+    
   );
 }
 
