@@ -4,29 +4,33 @@ import "../styles/Skills.css";
 function Skills() {
   return (
     <section className="skills-section" id="skills">
-
-      <div className="section-title">
+      
+      <div className="section-title fade-in-up">
         <span className="section-tag">Technical Skills</span>
         <h2>Technologies I Work With</h2>
         <p>
-          My technical skills and tools for developing modern web applications.
+          A snapshot of my technical toolkit, focused on developing scalable 
+          backend systems and dynamic user interfaces.
         </p>
       </div>
 
       <div className="skills-container">
-
-        <div className="skill-card">
-          <h3>Frontend</h3>
+        
+        <div className="skill-card slide-up" style={{ animationDelay: "0.1s" }}>
+          <div className="card-header">
+            <h3>Frontend</h3>
+          </div>
           <ul>
-            <li>HTML5</li>
-            <li>CSS3</li>
+            <li>HTML5 & CSS3</li>
             <li>JavaScript (ES6+)</li>
             <li>React.js</li>
           </ul>
         </div>
 
-        <div className="skill-card">
-          <h3>Backend</h3>
+        <div className="skill-card slide-up" style={{ animationDelay: "0.2s" }}>
+          <div className="card-header">
+            <h3>Backend</h3>
+          </div>
           <ul>
             <li>Java</li>
             <li>Spring Boot</li>
@@ -35,47 +39,42 @@ function Skills() {
           </ul>
         </div>
 
-        <div className="skill-card">
-          <h3>Database</h3>
+        <div className="skill-card slide-up" style={{ animationDelay: "0.3s" }}>
+          <div className="card-header">
+            <h3>Database</h3>
+          </div>
           <ul>
             <li>MySQL</li>
             <li>SQL</li>
+            <li>Data Modeling</li>
           </ul>
         </div>
 
-        <div className="skill-card">
-          <h3>Programming</h3>
+        <div className="skill-card slide-up" style={{ animationDelay: "0.4s" }}>
+          <div className="card-header">
+            <h3>Programming</h3>
+          </div>
           <ul>
-            <li>Java</li>
+            <li>Java Core</li>
             <li>Data Structures</li>
             <li>Algorithms</li>
             <li>Object-Oriented Programming</li>
           </ul>
         </div>
 
-        <div className="skill-card">
-          <h3>Developer Tools</h3>
+        <div className="skill-card slide-up" style={{ animationDelay: "0.5s" }}>
+          <div className="card-header">
+            <h3>Developer Tools</h3>
+          </div>
           <ul>
-            <li>Git</li>
-            <li>GitHub</li>
+            <li>Git & GitHub</li>
             <li>VS Code</li>
             <li>Postman</li>
             <li>IntelliJ IDEA</li>
           </ul>
         </div>
 
-        <div className="skill-card">
-          <h3>Currently Learning</h3>
-          <ul>
-            <li>Spring Security</li>
-            <li>JWT Authentication</li>
-            <li>Microservices</li>
-            <li>Docker</li>
-          </ul>
-        </div>
-
       </div>
-
     </section>
   );
 }
