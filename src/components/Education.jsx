@@ -34,7 +34,7 @@ function Education() {
 
           <div className="edu-right">
             <span>2023 - 2027</span>
-            <div className="gpa">GPA: 8.2/10</div>
+            <div className="gpa">GPA: 8.4/10</div>
           </div>
         </div>
 
@@ -54,7 +54,7 @@ function Education() {
 
           <div className="edu-right">
             <span>2021 - 2023</span>
-            <div className="gpa">GPA: 8.7/10</div>
+            <div className="gpa">pct: 87%</div>
           </div>
         </div>
 
@@ -74,7 +74,7 @@ function Education() {
 
           <div className="edu-right">
             <span>2021</span>
-            <div className="gpa">GPA: 9.2/10</div>
+            <div className="gpa">pct: 92%</div>
           </div>
         </div>
 

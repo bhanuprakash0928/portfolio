@@ -1,15 +1,10 @@
-/* ==========================
-   CONTACT SECTION
-========================== */
+
 
 .contact-section {
     padding: 90px 8%;
     background: linear-gradient(to bottom, #f8fbff, #ffffff);
 }
 
-/* ==========================
-   HEADER
-========================== */
 
 .contact-header {
     text-align: center;
@@ -42,9 +37,6 @@
 }
 
 
-/* ==========================
-   CONTACT CONTAINER
-========================== */
 
 .contact-container {
     max-width: 1100px;
@@ -58,9 +50,7 @@
 }
 
 
-/* ==========================
-   LEFT CONTACT INFORMATION
-========================== */
+
 
 .contact-info {
     background: #ffffff;
@@ -99,9 +89,7 @@
 }
 
 
-/* ==========================
-   EMAIL INFORMATION
-========================== */
+
 
 .contact-info-item {
     display: flex;
@@ -156,10 +144,6 @@
 }
 
 
-/* ==========================
-   SOCIAL BUTTONS
-========================== */
-
 .contact-socials {
     display: flex;
 
@@ -204,11 +188,6 @@
     transform: translateY(-5px) scale(1.05);
 }
 
-
-/* ==========================
-   CONTACT FORM CARD
-========================== */
-
 .contact-form-wrapper {
     background: #ffffff;
 
@@ -226,9 +205,6 @@
 }
 
 
-/* ==========================
-   FORM
-========================== */
 
 .contact-form {
     display: flex;
@@ -239,7 +215,6 @@
 }
 
 
-/* Name + Email */
 
 .form-row {
     display: grid;
@@ -250,7 +225,7 @@
 }
 
 
-/* Form Group */
+
 
 .form-group {
     display: flex;
@@ -269,11 +244,6 @@
 
     font-weight: 600;
 }
-
-
-/* ==========================
-   INPUTS
-========================== */
 
 .form-group input,
 .form-group select,
@@ -308,7 +278,6 @@
 }
 
 
-/* Focus */
 
 .form-group input:focus,
 .form-group select:focus,
@@ -322,7 +291,6 @@
 }
 
 
-/* Select */
 
 .form-group select {
     cursor: pointer;
@@ -331,7 +299,7 @@
 }
 
 
-/* Textarea */
+
 
 .form-group textarea {
 
@@ -342,10 +310,6 @@
     line-height: 1.6;
 }
 
-
-/* ==========================
-   SEND MESSAGE BUTTON
-========================== */
 
 .send-message-btn {
 
@@ -393,10 +357,6 @@
     transform: translateY(-1px);
 }
 
-
-/* ==========================
-   SUCCESS MESSAGE
-========================== */
 
 .success-message {
 
@@ -456,9 +416,6 @@
 }
 
 
-/* ==========================
-   MOBILE
-========================== */
 
 @media(max-width:850px) {
 
@@ -490,10 +447,6 @@
     }
 }
 
-
-/* ==========================
-   SMALL MOBILE
-========================== */
 
 @media(max-width:500px) {
 
@@ -528,10 +481,6 @@
         font-size: 23px;
     }
 }
-
-/* ==========================
-   LEFT MAIL CARD
-========================== */
 
 .contact-info {
     background: #ffffff;
@@ -591,8 +540,6 @@
 }
 
 
-/* Title */
-
 .contact-info h3 {
     font-size: 26px;
 
@@ -602,7 +549,7 @@
 }
 
 
-/* Email */
+
 
 .contact-info p {
     color: #6b7280;
@@ -617,9 +564,6 @@
 }
 
 
-/* ==========================
-   CONTACT NOTIFICATION
-========================== */
 
 .contact-notification {
     position: fixed;
@@ -654,21 +598,19 @@
 }
 
 
-/* Success */
 
 .contact-notification.success {
     border-left-color: #22c55e;
 }
 
 
-/* Error */
 
 .contact-notification.error {
     border-left-color: #ef4444;
 }
 
 
-/* Notification Icon */
+
 
 .notification-icon {
     width: 35px;
@@ -694,8 +636,6 @@
     font-weight: bold;
 }
 
-
-/* Error Icon */
 
 .contact-notification.error .notification-icon {
     background: #fee2e2;
@@ -731,7 +671,7 @@
 }
 
 
-/* Close Button */
+
 
 .notification-close {
     border: none;
@@ -756,10 +696,6 @@
 }
 
 
-/* ==========================
-   NOTIFICATION ANIMATION
-========================== */
-
 @keyframes notificationSlideIn {
 
     from {
@@ -777,9 +713,6 @@
 }
 
 
-/* ==========================
-   MOBILE NOTIFICATION
-========================== */
 
 @media(max-width:500px) {
 

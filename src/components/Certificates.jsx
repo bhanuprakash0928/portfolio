@@ -14,6 +14,47 @@ function Certificates() {
 
       <div className="cert-container">
 
+
+
+         <div className="cert-card">
+          <h3>Data Analytics with Tableau</h3>
+
+          <p>
+            Successfully completed a 2-month Short-Term Virtual Internship
+            Program in Data Analytics with Tableau, gaining practical
+            experience in data analysis and visualization.
+          </p>
+
+          <a
+            href="/Data Analytics(Tableau).pdf"
+            target="_blank"
+            rel="noreferrer"
+          >
+            View Certificate
+          </a>
+        </div>
+
+
+        {/* Pega National Internship */}
+        <div className="cert-card">
+          <h3>National Internship Program - Pegasystems</h3>
+
+          <p>
+            Successfully completed a 60-hour National Internship Program sponsored by
+            Pegasystems Worldwide India Private Limited in collaboration with
+            SmartBridge, gaining hands-on exposure to workflow automation, low-code
+            technologies, and real-world project implementation.
+          </p>
+
+          <a
+            href="/Pega-Internship-Certificate.pdf"
+            target="_blank"
+            rel="noreferrer"
+          >
+            View Certificate
+          </a>
+        </div>
+
         {/* Full Stack Certificate */}
         <div className="cert-card">
           <h3>Full Stack Web Development</h3>
