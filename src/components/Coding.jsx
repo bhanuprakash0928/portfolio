@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Projects.css";
 
-// Centralized Project Data for cleaner code
+// Centralized Project Data with structured details
 const projectData = [
   {
     id: 1,
     title: "KShopping",
-    fullDesc: "A full-stack e-commerce web application developed using Java and Spring Boot. The application allows users to browse products, manage their shopping cart, place orders, and interact with a structured backend for managing application data securely and efficiently.",
-    // Add multiple image paths here for the slider
+    shortDesc: "A full-stack e-commerce web application developed using Java and Spring Boot.",
+    roleAndUse: "Developed a secure, scalable backend and dynamic frontend to streamline the online shopping experience. In the real world, this architecture enables businesses to manage inventory, process secure checkouts, and handle user data efficiently.",
+    features: [
+      { label: "Description", value: "Java, Spring Boot, and React stack managing application data." },
+      { label: "User Dashboard", value: "Browse products, manage shopping cart, and place orders." },
+      { label: "Admin Dashboard", value: "Monitor user activity, track orders, and update inventory." },
+      { label: "Mail Services", value: "Automated order confirmation and status email notifications." }
+    ],
     images: ["/image.png", "/image.png", "/image.png"], 
     tags: ["Java", "Spring Boot", "HTML/CSS", "JavaScript", "SQL"],
     github: "https://github.com/bhanuprakash0928/k-shopping",
@@ -17,7 +23,13 @@ const projectData = [
   {
     id: 2,
     title: "Vehicle Booking System",
-    fullDesc: "A web-based vehicle booking application designed to simplify the process of searching and booking vehicles for different travel requirements. The system provides an interactive interface for selecting booking details, calculating estimated costs, and managing the overall booking experience.",
+    shortDesc: "A web-based application designed to simplify vehicle booking for travel.",
+    roleAndUse: "Built an interactive interface for calculating estimated costs and booking trips. Real-world applications include logistics management and ride-hailing services, optimizing route planning and fleet allocation.",
+    features: [
+      { label: "Description", value: "React and REST API integration for real-time data handling." },
+      { label: "User Dashboard", value: "Search vehicles, select travel details, and view cost estimates." },
+      { label: "Booking System", value: "Seamless booking flow with interactive UI elements." }
+    ],
     images: ["/image2.png", "/image2.png"],
     tags: ["React", "JavaScript", "HTML/CSS", "REST API"],
     github: null,
@@ -27,17 +39,31 @@ const projectData = [
   {
     id: 3,
     title: "Cosmetics Product Analysis Dashboard",
-    fullDesc: "An interactive Tableau dashboard developed to analyze cosmetics products across different brands and categories. The project analyzes product ratings, prices, brands, categories, and customer insights to identify trends and support data-driven decision-making. Data was cleaned and prepared using Excel and SQL before creating visualizations.",
+    shortDesc: "An interactive Tableau dashboard to analyze cosmetics products and trends.",
+    roleAndUse: "Cleaned and transformed raw data using Excel and SQL to build interactive visualizations. In a business context, this helps cosmetic brands identify market trends, pricing strategies, and customer preferences for data-driven decisions.",
+    features: [
+      { label: "Description", value: "End-to-end data pipeline from raw Excel/SQL to Tableau." },
+      { label: "Trend Analysis", value: "Visualized product ratings, prices, brands, and categories." },
+      { label: "Customer Insights", value: "Extracted actionable metrics to support marketing strategies." }
+    ],
     images: ["/Dashboard 1.png", "/Dashboard 1.png"],
     tags: ["Tableau", "SQL", "Excel", "Data Analysis", "Data Visualization"],
     github: "https://github.com/bhanuprakash0928/Cosmetic-Insights-Tableau",
-    live: "https://public.tableau.com/app/profile/yettapu.bhanu.prakash.reddy/viz/CosmeticsDashboard_17829848680900/Dashboard1",
+    live: null,
+    dashboardLink: "https://public.tableau.com/app/profile/yettapu.bhanu.prakash.reddy/viz/CosmeticsDashboard_17829848680900/Dashboard1",
+    storyLink: "#", // Replace with your actual Tableau Story link
     delay: "0.3s"
   },
   {
     id: 4,
     title: "Personal Portfolio",
-    fullDesc: "A responsive personal portfolio website developed using React to showcase my technical skills, projects, education, certifications, and professional journey. The portfolio features responsive design, smooth animations, interactive sections, and a highly polished user interface.",
+    shortDesc: "A responsive portfolio website to showcase my technical skills and projects.",
+    roleAndUse: "Designed and developed a highly polished UI to present my professional journey. It demonstrates modern web development practices, accessibility standards, and responsive design to potential employers.",
+    features: [
+      { label: "Description", value: "Built with React and Vite for optimal performance." },
+      { label: "UI/UX Design", value: "Features smooth animations, glassmorphism, and responsive grids." },
+      { label: "Accessibility", value: "Keyboard navigable with semantic HTML structure." }
+    ],
     images: ["/image1.png", "/image1.png"],
     tags: ["React", "JavaScript", "HTML", "CSS", "Vite"],
     github: "https://github.com/bhanuprakash0928/portfolio",
@@ -50,7 +76,7 @@ function Projects() {
   const [activeProject, setActiveProject] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  // Lock background scrolling when modal is open (Pro-level UX)
+  // Lock background scrolling when modal is open
   useEffect(() => {
     if (activeProject) {
       document.body.style.overflow = "hidden";
@@ -113,6 +139,7 @@ function Projects() {
             </div>
             <div className="project-content">
               <h3>{project.title}</h3>
+              <p className="project-short-desc">{project.shortDesc}</p>
               <button 
                 className="view-more-btn"
                 onClick={() => openModal(project)}
@@ -163,8 +190,21 @@ function Projects() {
               <h3>{activeProject.title}</h3>
               
               <div className="modal-section">
-                <h4>About the Project</h4>
-                <p>{activeProject.fullDesc}</p>
+                <h4>Project Overview & Real-World Use</h4>
+                <p>{activeProject.roleAndUse}</p>
+              </div>
+
+              {/* Horizontal Headings / Features Grid */}
+              <div className="modal-section">
+                <h4>Key Features</h4>
+                <div className="features-grid">
+                  {activeProject.features.map((feature, idx) => (
+                    <div key={idx} className="feature-item">
+                      <h5>{feature.label}</h5>
+                      <p>{feature.value}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
 
               <div className="modal-section">
@@ -176,10 +216,21 @@ function Projects() {
                 </div>
               </div>
 
+              {/* Links dynamically adapt based on project data */}
               <div className="modal-links">
                 {activeProject.live && (
                   <a href={activeProject.live} target="_blank" rel="noreferrer" className="project-btn primary">
                     Live Demo
+                  </a>
+                )}
+                {activeProject.dashboardLink && (
+                  <a href={activeProject.dashboardLink} target="_blank" rel="noreferrer" className="project-btn primary">
+                    View Dashboard
+                  </a>
+                )}
+                {activeProject.storyLink && (
+                  <a href={activeProject.storyLink} target="_blank" rel="noreferrer" className="project-btn secondary">
+                    View Story
                   </a>
                 )}
                 {activeProject.github && (

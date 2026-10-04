@@ -107,13 +107,22 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  flex-grow: 1;
 }
 
 .project-content h3 {
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--text-main);
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.project-short-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
 }
 
 .view-more-btn {
@@ -125,6 +134,7 @@
   cursor: pointer;
   padding: 0;
   transition: color 0.3s ease, transform 0.3s ease;
+  margin-top: auto;
 }
 
 .view-more-btn:hover {
@@ -155,7 +165,7 @@
   background: var(--white);
   border-radius: 1.5rem;
   width: 100%;
-  max-width: 1200px; /* Increased width for pro-level look */
+  max-width: 950px;
   max-height: 90vh;
   overflow-y: auto;
   position: relative;
@@ -187,12 +197,12 @@
 }
 
 /* =======================
-   MODAL CAROUSEL (Larger)
+   MODAL CAROUSEL
 ======================= */
 .modal-carousel {
   position: relative;
   width: 100%;
-  height: 450px; /* Taller image presentation */
+  height: 450px; 
   background: var(--bg-gradient);
 }
 
@@ -257,7 +267,7 @@
 }
 
 /* =======================
-   MODAL BODY & DETAILS
+   MODAL BODY & FEATURES
 ======================= */
 .modal-body {
   padding: 3rem;
@@ -271,20 +281,52 @@
 }
 
 .modal-section {
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .modal-section h4 {
   font-size: 1.25rem;
   color: var(--text-main);
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
   font-weight: 700;
+  border-bottom: 2px solid rgba(99, 102, 241, 0.1);
+  padding-bottom: 0.5rem;
+  display: inline-block;
 }
 
-.modal-section p {
+.modal-section > p {
   color: var(--text-muted);
   line-height: 1.8;
   font-size: 1.05rem;
+}
+
+/* Horizontal Features Grid */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.feature-item {
+  background: #f8fafc;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  border: 1px solid #e2e8f0;
+}
+
+.feature-item h5 {
+  font-size: 1rem;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.feature-item p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
 }
 
 .tags {
@@ -308,6 +350,7 @@
 ======================= */
 .modal-links {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   margin-top: 2.5rem;
 }
@@ -339,6 +382,17 @@
 .project-btn.primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(99, 102, 241, 0.35);
+}
+
+.project-btn.secondary {
+  background: var(--bg-gradient);
+  color: var(--primary-color);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.project-btn.secondary:hover {
+  background: rgba(99, 102, 241, 0.1);
+  transform: translateY(-2px);
 }
 
 .project-btn.outline {
@@ -391,4 +445,97 @@
   .modal-body { padding: 1.5rem; }
   .modal-body h3 { font-size: 1.75rem; }
   .modal-links { flex-direction: column; }
+  .features-grid { grid-template-columns: 1fr; }
+}
+
+/* =======================
+   MODAL TABS (Horizontal Buttons)
+======================= */
+.modal-header {
+  padding: 2.5rem 2.5rem 0;
+  background: var(--white);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.modal-header h3 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 1.5rem;
+}
+
+.modal-tabs {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto; /* Allows swiping on small screens */
+  scrollbar-width: none; /* Hide scrollbar Firefox */
+}
+
+.modal-tabs::-webkit-scrollbar {
+  display: none; /* Hide scrollbar Chrome/Safari */
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  padding: 0.75rem 0.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  position: relative;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+.tab-btn:hover {
+  color: var(--primary-color);
+}
+
+.tab-btn.active {
+  color: var(--primary-color);
+}
+
+/* The Animated Tab Underline */
+.tab-btn::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--primary-color);
+  border-radius: 3px 3px 0 0;
+  transform: scaleX(0);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center;
+}
+
+.tab-btn.active::after {
+  transform: scaleX(1);
+}
+
+/* =======================
+   MODAL BODY ADJUSTMENTS
+======================= */
+.tab-description {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  padding-left: 1rem;
+  border-left: 3px solid rgba(99, 102, 241, 0.2);
+  animation: modalFadeIn 0.4s ease-out; /* Smooth text transition */
+}
+
+/* New Link Types (Secondary for Tableau Story) */
+.project-btn.secondary {
+  background: rgba(99, 102, 241, 0.1);
+  color: var(--primary-color);
+  border: 1px solid transparent;
+}
+
+.project-btn.secondary:hover {
+  background: rgba(99, 102, 241, 0.15);
+  transform: translateY(-2px);
 }

@@ -1,3 +1,4 @@
+
 import React from "react";
 import "../styles/About.css";
 
@@ -9,7 +10,7 @@ function About() {
         {/* LEFT SIDE */}
         <div className="hero-text fade-in-up">
           <span className="badge">
-            Java | Spring Boot | Maven & Data Analytics | Tableau
+            Java | Spring Boot | Maven | AWS Cloud | Data Analytics | Tableau
           </span>
           
           <h1>
@@ -21,7 +22,7 @@ function About() {
 
           <p>
             Passionate Computer Science student with hands-on experience in Java,
-            Spring Boot, Maven, SQL, and Tableau. I enjoy developing backend
+            Spring Boot, Maven, SQL, AWS Cloud, and Tableau. I enjoy developing backend
             applications and creating interactive data analytics dashboards to solve
             real-world problems. Currently seeking opportunities to grow as a Java
             Developer or Data Analyst while continuously enhancing my technical skills.
@@ -48,3 +49,6 @@ function About() {
 }
 
 export default About;
+
+
+

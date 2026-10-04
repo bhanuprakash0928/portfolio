@@ -13,6 +13,37 @@ function Certificates() {
 </div>
 
       <div className="cert-container">
+          
+            {/* AWS Certified Cloud Practitioner */}
+            <div className="cert-card">
+              <img
+                src="/aws-certified-cloud-practitioner.png"
+                alt="AWS Certified Cloud Practitioner Badge"
+                className="cert-badge"
+              />
+
+              <h3>AWS Certified Cloud Practitioner</h3>
+
+              <p>
+                Earned the AWS Certified Cloud Practitioner certification, demonstrating
+                foundational knowledge of AWS Cloud concepts, services, security,
+                architecture, and cloud computing.
+              </p>
+
+              <p className="cert-date">
+                <strong>Issued:</strong> September 30, 2026 &nbsp; | &nbsp;
+                <strong>Valid Until:</strong> September 30, 2029
+              </p>
+
+              <a
+                href="/Cloud Practiciner.pdf"
+                target="_blank"
+                rel="noreferrer"
+              >
+                View Certificate
+              </a>
+            </div>
+
 
 
 

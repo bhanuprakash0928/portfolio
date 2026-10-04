@@ -111,3 +111,19 @@
 }
 
 }
+
+.cert-badge {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 15px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.cert-badge:hover {
+  transform: scale(2.5);
+  position: relative;
+  z-index: 10;
+}
