@@ -102,6 +102,29 @@ function Certificates() {
           </a>
         </div>
 
+        {/* Java Full Stack - TalentNext (Wipro) */}
+        <div className="cert-card">
+          <h3>Java Full Stack - TalentNext (Wipro)</h3>
+
+          <p>
+            Successfully completed the Java Full Stack course under the Digital
+            Skills Readiness Program by TalentNext, Wipro Limited, during July to
+            October 2026.
+          </p>
+
+          <p className="cert-date">
+            <strong>Cert ID:</strong> TNext-SE-2026-J_261640417
+          </p>
+
+          <a
+            href="/Java_Full_Stack.pdf"
+            target="_blank"
+            rel="noreferrer"
+          >
+            View Certificate
+          </a>
+        </div>
+
         {/* Hackathon Achievement */}
         <div className="cert-card">
           <h3>Hackathon Achievement - Code Rush 2K25</h3>

@@ -10,7 +10,7 @@ function Navbar() {
       {/* Logo */}
       <div className="logo">
         <div className="logo-box">B</div>
-        <h2>Bhanu Prakash Reddy</h2>
+        <h2>Yettapu Bhanu Prakash Reddy</h2>
       </div>
 
       {/* Mobile Menu */}

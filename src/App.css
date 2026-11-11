@@ -1,131 +1,257 @@
-/* Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+/* =====================================================
+   GLOBAL ANIMATION LAYER
+   - aurora background
+   - scroll progress bar
+   - scroll-driven reveals (with fallback)
+   - shared glass-card + animated gradient border
+===================================================== */
 
-/* Reset */
+/* ---------- Aurora background ---------- */
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+html::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:56px 56px;
+  mask-image:radial-gradient(ellipse at 50% 30%,#000 10%,transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse at 50% 30%,#000 10%,transparent 75%);
+  pointer-events:none;
 }
 
-/* Smooth Scroll */
-
-html{
-    scroll-behavior:smooth;
+body::before{
+  content:"";
+  position:fixed;
+  inset:-30%;
+  z-index:-1;
+  background:
+    radial-gradient(38% 38% at 20% 25%,rgba(124,92,255,.38),transparent 70%),
+    radial-gradient(34% 34% at 80% 15%,rgba(34,211,238,.26),transparent 70%),
+    radial-gradient(40% 40% at 70% 80%,rgba(255,79,163,.24),transparent 70%),
+    radial-gradient(30% 30% at 15% 85%,rgba(34,211,238,.16),transparent 70%);
+  filter:blur(30px);
+  animation:aurora 28s linear infinite;
+  pointer-events:none;
 }
 
-/* Body */
-
-body{
-    font-family:'Poppins',sans-serif;
-    background:#f8fbff;
-    color:#333;
-    overflow-x:hidden;
+@keyframes aurora{
+  0%  {transform:rotate(0deg) scale(1);}
+  50% {transform:rotate(180deg) scale(1.15);}
+  100%{transform:rotate(360deg) scale(1);}
 }
 
-/* Root */
+/* ---------- Scroll progress bar ---------- */
 
-#root{
-    width:100%;
-    min-height:100vh;
+@supports (animation-timeline:scroll()){
+  body::after{
+    content:"";
+    position:fixed;
+    top:0;left:0;
+    width:100%;height:3px;
+    background:var(--grad);
+    transform-origin:0 50%;
+    z-index:3000;
+    animation:progressBar linear both;
+    animation-timeline:scroll(root block);
+  }
+}
+@keyframes progressBar{
+  from{transform:scaleX(0);}
+  to{transform:scaleX(1);}
 }
 
-/* Images */
+/* ---------- Reveal animations ----------
+   Uses the individual `translate` / `scale` properties so they
+   never fight with the `transform` used by hover effects.     */
 
-img{
-    max-width:100%;
-    display:block;
+@keyframes reveal{
+  from{opacity:0;translate:0 50px;scale:.96;}
+  to{opacity:1;translate:0 0;scale:1;}
 }
 
-/* Links */
-
-a{
-    text-decoration:none;
+.fade-in-up,
+.slide-up,
+.cert-card,
+.gallery-card{
+  animation:reveal .9s var(--ease) backwards;
 }
 
-/* Lists */
-
-ul{
-    list-style:none;
+/* Scroll-driven: animate when the element enters the viewport */
+@supports (animation-timeline:view()){
+  .fade-in-up,
+  .slide-up,
+  .cert-card,
+  .gallery-card{
+    animation:reveal linear both;
+    animation-timeline:view();
+    animation-range:entry 0% entry 60%;
+    animation-delay:0s !important;
+  }
 }
 
-/* Buttons */
+/* ---------- Shared keyframes ---------- */
 
-button{
-    border:none;
-    outline:none;
-    cursor:pointer;
-    font-family:inherit;
+@keyframes spinAngle{to{--angle:360deg;}}
+@keyframes gradientText{to{background-position:300% center;}}
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-16px);}
+}
+@keyframes pulseRing{
+  0%{box-shadow:0 0 0 0 rgba(124,92,255,.55);}
+  70%{box-shadow:0 0 0 14px rgba(124,92,255,0);}
+  100%{box-shadow:0 0 0 0 rgba(124,92,255,0);}
+}
+@keyframes shine{
+  0%{translate:-150% 0;}
+  60%,100%{translate:250% 0;}
+}
+@keyframes flowX{
+  0%,100%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+}
+@keyframes popIn{
+  from{opacity:0;scale:.6;}
+  to{opacity:1;scale:1;}
 }
 
-/* Section */
+.float-anim{animation:float 6s ease-in-out infinite;}
 
-section{
-    width:100%;
+/* ---------- Animated gradient headings ---------- */
+
+.section-title h2,
+.edu-header h2,
+.projects-header h2,
+.gallery-header h2,
+.contact-header h2{
+  font-size:clamp(2rem,4.4vw,3.2rem);
+  font-weight:800;
+  letter-spacing:-.02em;
+  margin:14px 0 14px;
+  background:linear-gradient(100deg,#fff 0%,var(--c2) 25%,var(--c1) 50%,var(--c3) 75%,#fff 100%);
+  background-size:300% auto;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:gradientText 7s linear infinite;
 }
 
-/* Headings */
+/* ---------- Section tags / pills ---------- */
 
-h1,h2,h3,h4,h5,h6{
-    font-weight:600;
-    color:#222;
+.section-tag,
+.project-badge,
+.gallery-tag,
+.badge{
+  display:inline-block;
+  padding:8px 20px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:1.4px;
+  text-transform:uppercase;
+  color:#d8d2ff;
+  background:rgba(124,92,255,.14);
+  border:1px solid rgba(124,92,255,.35);
+  backdrop-filter:blur(8px);
+  animation:pulseRing 3s ease-out infinite;
 }
 
-/* Paragraph */
+/* ---------- Section headers ---------- */
 
-p{
-    color:#666;
-    line-height:1.7;
+.section-title,
+.edu-header,
+.projects-header,
+.gallery-header,
+.contact-header{
+  text-align:center;
+  margin-bottom:64px;
+}
+.section-title p,
+.edu-header p,
+.projects-header p,
+.gallery-header p,
+.contact-header p{
+  max-width:640px;
+  margin:0 auto;
+  font-size:16px;
 }
 
-/* Selection */
+/* ---------- Glass card + animated gradient border ---------- */
 
-::selection{
-    background:#2563eb;
-    color:white;
+.skill-card,
+.edu-card,
+.project-card,
+.cert-card,
+.gallery-card,
+.contact-info,
+.contact-form-wrapper{
+  position:relative;
+  background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.025));
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  box-shadow:0 20px 50px -20px rgba(0,0,0,.6);
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .5s;
 }
 
-html{
-  scroll-behavior: smooth;
+.skill-card::after,
+.edu-card::after,
+.project-card::after,
+.cert-card::after,
+.gallery-card::after,
+.contact-info::after,
+.contact-form-wrapper::after{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius:inherit;
+  padding:1.5px;
+  background:conic-gradient(from var(--angle),transparent 0 62%,var(--c1),var(--c2),var(--c3),transparent);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);
+  opacity:0;
+  transition:opacity .5s;
+  animation:spinAngle 4s linear infinite;
+  pointer-events:none;
 }
 
-body{
-  margin:0;
-  font-family: "Poppins", sans-serif;
-  overflow-x:hidden;
+.skill-card:hover,
+.edu-card:hover,
+.project-card:hover,
+.cert-card:hover,
+.gallery-card:hover,
+.contact-info:hover,
+.contact-form-wrapper:hover{
+  transform:translateY(-10px);
+  box-shadow:0 30px 70px -20px rgba(124,92,255,.45);
 }
 
-.fade-in{
-    animation:fadeIn 1s ease;
+.skill-card:hover::after,
+.edu-card:hover::after,
+.project-card:hover::after,
+.cert-card:hover::after,
+.gallery-card:hover::after,
+.contact-info:hover::after,
+.contact-form-wrapper:hover::after{
+  opacity:1;
 }
 
-@keyframes fadeIn{
+/* Contact blocks should not jump on hover */
+.contact-info:hover,
+.contact-form-wrapper:hover{transform:translateY(-4px);}
 
-from{
-opacity:0;
-}
+/* ---------- Reduced motion ---------- */
 
-to{
-opacity:1;
-}
-
-}
-
-.slide-up{
-    animation:slideUp .8s ease;
-}
-
-@keyframes slideUp{
-
-from{
-transform:translateY(40px);
-opacity:0;
-}
-
-to{
-transform:translateY(0);
-opacity:1;
-}
-
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+    scroll-behavior:auto !important;
+  }
 }

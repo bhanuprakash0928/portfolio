@@ -1,197 +1,157 @@
-/* ================= NAVBAR ================= */
+/* =====================================================
+   NAVBAR – floating glass pill
+===================================================== */
 
 .navbar{
-    position:fixed;
-    top:20px;
-    left:50%;
-    transform:translateX(-50%);
-
-    width:92%;
-    max-width:1300px;
-    height:75px;
-
-    background:rgba(255,255,255,0.85);
-    backdrop-filter:blur(15px);
-
-    border-radius:18px;
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    padding:0 40px;
-
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
-
-    z-index:1000;
+  position:fixed;
+  top:18px;
+  left:50%;
+  transform:translateX(-50%);
+  width:92%;
+  max-width:1240px;
+  height:68px;
+  padding:0 14px 0 14px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(14,14,28,.55);
+  backdrop-filter:blur(20px) saturate(170%);
+  -webkit-backdrop-filter:blur(20px) saturate(170%);
+  border:1px solid var(--line);
+  border-radius:999px;
+  box-shadow:0 18px 50px -18px rgba(0,0,0,.7);
+  z-index:1000;
+  animation:navDrop 1s var(--ease) backwards;
 }
 
-/* ================= LOGO ================= */
-
-.logo{
-    display:flex;
-    align-items:center;
-    gap:15px;
+@keyframes navDrop{
+  from{opacity:0;translate:0 -80px;}
+  to{opacity:1;translate:0 0;}
 }
+
+/* ---------- Logo ---------- */
+
+.logo{display:flex;align-items:center;gap:12px;}
 
 .logo-box{
-
-    width:52px;
-    height:52px;
-
-    border-radius:50%;
-
-    background:linear-gradient(135deg,#2563eb,#7c3aed);
-
-    color:white;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    font-size:24px;
-    font-weight:700;
-
-    box-shadow:0 10px 25px rgba(37,99,235,.35);
-
-    transition:.4s;
+  position:relative;
+  width:44px;height:44px;
+  border-radius:50%;
+  display:flex;justify-content:center;align-items:center;
+  font-family:var(--font-head);
+  font-weight:800;
+  font-size:20px;
+  color:#fff;
+  background:var(--bg-soft);
+  isolation:isolate;
+  transition:transform .6s var(--ease);
 }
-
-.logo-box:hover{
-
-    transform:rotate(360deg) scale(1.1);
-
+.logo-box::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius:50%;
+  padding:2px;
+  background:conic-gradient(from var(--angle),var(--c1),var(--c2),var(--c3),var(--c1));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);
+  animation:spinAngle 3s linear infinite;
+  z-index:-1;
 }
+.logo-box:hover{transform:rotate(360deg) scale(1.1);}
 
 .logo h2{
-
-    font-size:22px;
-    font-weight:700;
-
-    color:#222;
+  font-size:18px;
+  font-weight:700;
+  letter-spacing:-.01em;
+  background:var(--grad);
+  background-size:200% auto;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:gradientText 6s linear infinite;
 }
 
-/* ================= MENU ================= */
+/* ---------- Links ---------- */
 
-.nav-links{
+.nav-links{display:flex;align-items:center;gap:4px;}
 
-    display:flex;
-    align-items:center;
-    gap:35px;
+.nav-links li{animation:linkIn .7s var(--ease) backwards;}
+.nav-links li:nth-child(1){animation-delay:.35s;}
+.nav-links li:nth-child(2){animation-delay:.42s;}
+.nav-links li:nth-child(3){animation-delay:.49s;}
+.nav-links li:nth-child(4){animation-delay:.56s;}
+.nav-links li:nth-child(5){animation-delay:.63s;}
+.nav-links li:nth-child(6){animation-delay:.70s;}
+.nav-links li:nth-child(7){animation-delay:.77s;}
 
-    list-style:none;
+@keyframes linkIn{
+  from{opacity:0;translate:0 -16px;}
+  to{opacity:1;translate:0 0;}
 }
 
 .nav-links li a{
-
-    color:#333;
-
-    font-size:16px;
-    font-weight:600;
-
-    text-decoration:none;
-
-    position:relative;
-
-    transition:.3s;
+  position:relative;
+  display:block;
+  padding:9px 16px;
+  font-size:14.5px;
+  font-weight:500;
+  color:var(--muted);
+  border-radius:999px;
+  transition:color .3s,background .3s;
 }
-
 .nav-links li a::after{
+  content:"";
+  position:absolute;
+  left:50%;bottom:4px;
+  width:0;height:2px;
+  border-radius:2px;
+  background:var(--grad);
+  transform:translateX(-50%);
+  transition:width .4s var(--ease);
+}
+.nav-links li a:hover{color:#fff;background:var(--surface-2);}
+.nav-links li a:hover::after{width:40%;}
 
-    content:"";
+/* ---------- Hamburger ---------- */
 
+.menu-icon{
+  display:none;
+  font-size:28px;
+  color:#fff;
+  cursor:pointer;
+  padding:0 12px;
+  transition:transform .4s var(--ease),color .3s;
+}
+.menu-icon:hover{color:var(--c2);transform:scale(1.15);}
+
+/* ---------- Mobile ---------- */
+
+@media(max-width:900px){
+  .navbar{top:10px;width:95%;border-radius:26px;}
+  .logo h2{display:none;}
+  .menu-icon{display:block;}
+
+  .nav-links{
     position:absolute;
-
-    left:0;
-    bottom:-6px;
-
-    width:0;
-    height:3px;
-
-    background:#2563eb;
-
-    border-radius:20px;
-
-    transition:.3s;
-}
-
-.nav-links li a:hover{
-
-    color:#2563eb;
-}
-
-.nav-links li a:hover::after{
-
+    top:80px;left:0;
     width:100%;
-}
-
-/* ================= HAMBURGER ================= */
-
-.menu-icon{
-
     display:none;
-
-    font-size:32px;
-
-    cursor:pointer;
-
-    color:#2563eb;
+    flex-direction:column;
+    gap:2px;
+    padding:16px;
+    background:rgba(14,14,28,.92);
+    backdrop-filter:blur(22px);
+    border:1px solid var(--line);
+    border-radius:24px;
+    box-shadow:0 24px 60px rgba(0,0,0,.6);
+  }
+  .nav-links.active{display:flex;animation:menuOpen .45s var(--ease);}
+  .nav-links li{width:100%;}
+  .nav-links li a{padding:13px 18px;text-align:center;}
 }
-
-/* ================= MOBILE ================= */
-
-@media(max-width:768px){
-
-.navbar{
-
-padding:0 20px;
-
-top:10px;
-
-width:95%;
-
-}
-
-.logo h2{
-
-display:none;
-
-}
-
-.menu-icon{
-
-display:block;
-
-}
-
-.nav-links{
-
-position:absolute;
-
-top:85px;
-
-left:0;
-
-width:100%;
-
-background:white;
-
-border-radius:20px;
-
-display:none;
-
-flex-direction:column;
-
-padding:25px 0;
-
-box-shadow:0 10px 30px rgba(0,0,0,.15);
-
-}
-
-.nav-links.active{
-
-display:flex;
-
-}
-
+@keyframes menuOpen{
+  from{opacity:0;translate:0 -18px;scale:.97;}
+  to{opacity:1;translate:0 0;scale:1;}
 }
