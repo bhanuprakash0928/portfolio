@@ -174,7 +174,7 @@
   overflow: hidden;
   border-right: 4px solid var(--primary-color);
   width: 0;
-  animation: typing 3s steps(22, end) forwards, blink 0.8s infinite;
+  animation: typing 3s steps(27, end) forwards, blink 0.8s infinite;
 }
 
 @keyframes typing {
@@ -187,7 +187,7 @@
 }
 
 /* ================= MOBILE RESPONSIVENESS ================= */
-@media (max-width: 992px) {
+@media (max-width: 1099px) {
   .hero-container {
     flex-direction: column-reverse;
     text-align: center;
@@ -245,4 +245,149 @@
     width: 230px;
     height: 230px;
   }
+}
+
+/* =====================================================================
+   THREE-PART LAYOUT:  intro (left)  |  About Me (middle)  |  photo (right)
+   Everything above is the original design; this block only adds the middle
+   column, the social icons and the location chip.
+===================================================================== */
+
+.hero-text { min-width: 0; }
+
+/* --- social icons under the buttons --- */
+.hero-social {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+.hero-social a {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  font-size: 17px;
+  color: var(--text-muted);
+  background: var(--white);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 50%;
+  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.1);
+  transition: all 0.3s ease;
+}
+.hero-social a:hover {
+  color: var(--white);
+  background: var(--primary-color);
+  transform: translateY(-4px);
+}
+
+/* --- middle: About Me --- */
+.about-me {
+  flex: 1.2;
+  min-width: 0;
+  padding: 6px 40px;
+  text-align: left;
+  border-left: 1px solid rgba(99, 102, 241, 0.2);
+  border-right: 1px solid rgba(99, 102, 241, 0.2);
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+.about-me-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--primary-color);
+}
+.about-me h2 {
+  margin: 0 0 22px;
+  font-size: 44px;
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--text-main);
+}
+.about-me h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  margin-top: 14px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+.about-me p {
+  font-size: 16.5px;
+  line-height: 1.9;
+  color: var(--text-muted);
+}
+
+/* --- right: photo + location --- */
+.hero-image {
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+}
+.location-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 22px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-main);
+  background: var(--white);
+  border: 1px solid rgba(99, 102, 241, 0.18);
+  border-radius: 40px;
+  box-shadow: 0 8px 22px rgba(99, 102, 241, 0.15);
+}
+.location-chip svg {
+  color: var(--primary-color);
+  font-size: 16px;
+}
+
+/* --- desktop: three columns (smaller type so the name never clips) --- */
+@media (min-width: 1100px) {
+  .hero { padding-left: 5%; padding-right: 5%; }
+  .hero-container { gap: 48px; max-width: 1400px; }
+  .hero-text { flex: 1.05; }
+  .hero-image { flex: 0.7; }
+
+  .hero-text h1 { font-size: 40px; }
+  .typing-name span { font-size: clamp(20px, 1.75vw, 28px); }
+  .hero-text p { font-size: 16px; margin-bottom: 32px; }
+
+  .image-wrapper {
+    width: 100%;
+    max-width: 340px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+}
+
+/* --- tablet / mobile: photo, intro, About Me stacked --- */
+@media (max-width: 1099px) {
+  .hero-container { max-width: 760px; flex-direction: column; } /* photo (order -1) -> intro -> About Me */
+  .hero-image { order: -1; }
+  .hero-text, .about-me { flex: none; width: 100%; }
+  .about-me {
+    padding: 36px 0 0;
+    border-left: 0;
+    border-right: 0;
+    border-top: 1px solid rgba(99, 102, 241, 0.2);
+  }
+  .about-me h2 { font-size: 34px; }
+  .hero-social { justify-content: center; }
+}
+
+@media (max-width: 576px) {
+  .about-me h2 { font-size: 28px; }
+  .about-me p { font-size: 15.5px; line-height: 1.8; }
+}
+
+/* --- keep the typed name inside the screen on tablets and phones --- */
+@media (max-width: 1099px) {
+  .typing-name span { font-size: min(44px, 6vw); }
+}
+@media (max-width: 576px) {
+  .typing-name span { font-size: min(28px, 6.4vw); }
 }

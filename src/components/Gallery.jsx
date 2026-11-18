@@ -1,55 +1,98 @@
-import React from "react";
-
+import { useEffect, useMemo, useState } from "react";
+import Lightbox from "./Lightbox.jsx";
+import { getGalleryItems, getCategories, labelFor } from "../utils/gallery.js";
 import "../styles/Gallery.css";
-function Gallery() {
-  return (
-    <section className="gallery-section">
 
+/** Achievements & activities gallery with category filters + lightbox. */
+function Gallery() {
+  const allItems = useMemo(() => getGalleryItems(), []);
+  const categories = useMemo(() => getCategories(allItems), [allItems]);
+
+  const [filter, setFilter] = useState("all");
+  const [previewIndex, setPreviewIndex] = useState(null);
+
+  useEffect(() => {
+    const previousTitle = document.title;
+    document.title = "Gallery | Bhanu Prakash Reddy";
+    return () => {
+      document.title = previousTitle;
+    };
+  }, []);
+
+  const visible = useMemo(
+    () => (filter === "all" ? allItems : allItems.filter((item) => item.categories.includes(filter))),
+    [allItems, filter]
+  );
+
+  const lightboxItems = visible.map((item) => ({
+    src: item.src,
+    title: item.title,
+    subtitle: item.description,
+    alt: item.alt,
+  }));
+
+  return (
+    <main className="gallery-section">
       <div className="gallery-header">
         <span className="gallery-tag">Gallery</span>
-        <h2>My Journey</h2>
+        <h1>My Journey</h1>
         <p>
-          A collection of my hackathon achievements, project work, and memorable moments.
+          A collection of my achievements, certificates, project work and memorable moments.
         </p>
       </div>
 
-      <div className="gallery-container">
-
-        <div className="gallery-card">
-          <img src="/coderesh-2025.jpeg" alt="Hackathon" />
-          <div className="gallery-content">
-            <h3>Code Rush 2K25</h3>
-            <p>Top 20 Team in Code Rush 2K25 Hackathon.</p>
-          </div>
+      {categories.length > 2 && (
+        <div className="gallery-filters" role="group" aria-label="Filter gallery by category">
+          {categories.map((category) => (
+            <button
+              type="button"
+              key={category.id}
+              className={filter === category.id ? "filter-chip is-active" : "filter-chip"}
+              aria-pressed={filter === category.id}
+              onClick={() => setFilter(category.id)}
+            >
+              {category.label}
+              <span className="filter-count">{category.count}</span>
+            </button>
+          ))}
         </div>
+      )}
 
-        <div className="gallery-card">
-          <img src="/image.png" alt="KShopping Project" />
-          <div className="gallery-content">
-            <h3>KShopping Project</h3>
-            <p>Spring Boot based E-Commerce Application.</p>
-          </div>
-        </div>
+      {visible.length === 0 ? (
+        <p className="gallery-empty">
+          No images yet. Add pictures to <code>public/images/gallery/</code> and they will appear here.
+        </p>
+      ) : (
+        <ul className="gallery-masonry">
+          {visible.map((item, i) => (
+            <li key={item.id}>
+              <button
+                type="button"
+                className="gallery-item"
+                onClick={() => setPreviewIndex(i)}
+                aria-label={`Open ${item.title} in full size`}
+              >
+                <img src={item.src} alt={item.alt} loading="lazy" decoding="async" />
+                <span className="gallery-overlay">
+                  <span className="gallery-cats">{item.categories.map(labelFor).join(" · ")}</span>
+                  <strong>{item.title}</strong>
+                  {item.description && <span className="gallery-desc">{item.description}</span>}
+                </span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
 
-        <div className="gallery-card">
-          <img src="/image1.png" alt="Portfolio" />
-          <div className="gallery-content">
-            <h3>Personal Portfolio</h3>
-            <p>Responsive portfolio built using React.</p>
-          </div>
-        </div>
-
-        <div className="gallery-card">
-          <img src="/image2.png" alt="Vehicle Booking" />
-          <div className="gallery-content">
-            <h3>Vehicle Booking System</h3>
-            <p>Travel planning application developed using React.</p>
-          </div>
-        </div>
-
-      </div>
-
-    </section>
+      {previewIndex !== null && (
+        <Lightbox
+          items={lightboxItems}
+          index={previewIndex}
+          onIndexChange={setPreviewIndex}
+          onClose={() => setPreviewIndex(null)}
+        />
+      )}
+    </main>
   );
 }
 

@@ -1,0 +1,200 @@
+/* =====================================================================
+   FULL-SCREEN SCROLL SNAP  (Projects + Certificates)
+   Pure CSS:  scroll-snap-type: y mandatory  +  scroll-snap-align: start.
+   Styled with the original light theme (white, indigo/violet, soft shadows).
+   ===================================================================== */
+
+:root {
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --card-border: rgba(15, 23, 42, 0.08);
+  --card-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  --card-shadow-hover: 0 24px 50px rgba(99, 102, 241, 0.2);
+}
+
+/* The class is added to <html> only while the home page is mounted */
+html.snap-home {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+/* Normal sections are snap points too. Sections taller than the screen can
+   still be scrolled through freely; snapping happens at their edges. */
+html.snap-home .hero,
+html.snap-home .skills-section,
+html.snap-home .education-section,
+html.snap-home .contact-section {
+  scroll-snap-align: start;
+}
+html.snap-home .footer {
+  scroll-snap-align: end;
+}
+
+/* ---------- One screen ---------- */
+
+.snap-section {
+  position: relative;
+  background: var(--white);
+}
+
+.snap-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  min-height: 100svh; /* exactly one screen (grows only if content is taller) */
+  padding: 120px 8% 80px;
+  scroll-snap-align: start;
+  scroll-snap-stop: always; /* one scroll gesture = one screen */
+  border-top: 1px solid var(--card-border);
+}
+
+.snap-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+/* Subtle fade-in when a screen arrives (supported browsers only) */
+@supports (animation-timeline: view()) {
+  .snap-inner {
+    animation: snapIn linear both;
+    animation-timeline: view();
+    animation-range: entry 5% entry 55%;
+  }
+}
+@keyframes snapIn {
+  from { opacity: 0; translate: 0 36px; }
+  to   { opacity: 1; translate: 0 0; }
+}
+
+/* "01 / 04" label row */
+.snap-eyebrow {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 26px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.snap-eyebrow span:last-child {
+  color: var(--primary-color);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Dot rail (current screen + jump) ---------- */
+
+.snap-rail {
+  /* Fixed to the right edge, only visible while its own section is on screen */
+  position: fixed;
+  top: 50%;
+  right: clamp(10px, 2vw, 28px);
+  z-index: 40;
+  transform: translateY(-50%);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+.snap-rail.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+.snap-rail ul {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.snap-rail button {
+  position: relative;
+  display: block;
+  width: 22px;
+  height: 22px;
+  background: transparent;
+}
+.snap-rail button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(99, 102, 241, 0.28);
+  transform: translate(-50%, -50%);
+  transition: height 0.35s var(--ease), background 0.3s;
+}
+.snap-rail button:hover::before { background: rgba(99, 102, 241, 0.6); }
+.snap-rail button.is-active::before {
+  height: 26px;
+  background: var(--primary-color);
+}
+
+/* tooltip with the screen name (desktop) */
+.snap-rail-label {
+  position: absolute;
+  top: 50%;
+  right: 30px;
+  padding: 6px 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--text-main);
+  border-radius: 8px;
+  background: var(--white);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(6px, -50%);
+  transition: opacity 0.25s, transform 0.25s var(--ease);
+}
+.snap-rail button:hover .snap-rail-label,
+.snap-rail button:focus-visible .snap-rail-label {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+
+/* ---------- "Scroll" hint ---------- */
+
+.snap-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  opacity: 0.7;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.snap-hint::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+}
+
+@media (max-width: 900px) {
+  .snap-item { padding: 104px 6% 64px; }
+  .snap-rail { right: 4px; }
+  .snap-rail ul { gap: 2px; }
+  .snap-rail button { width: 18px; height: 18px; }
+  .snap-rail button::before { width: 6px; height: 6px; }
+  .snap-rail button.is-active::before { height: 20px; }
+  .snap-rail-label { display: none; }
+  .snap-hint { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.snap-home { scroll-behavior: auto; }
+}

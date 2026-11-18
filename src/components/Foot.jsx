@@ -1,4 +1,3 @@
-import React from "react";
 import { FaGithub, FaLinkedin, FaEnvelope, FaArrowUp } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "../styles/Footer.css";
@@ -8,17 +7,19 @@ function Footer() {
 
       {/* LEFT */}
       <div className="footer-left">
-        <span className="code-symbol">&lt;/&gt;</span>
+        <span className="code-symbol">
+          <img src="/logo-yb.png" alt="" width="24" height="21" />
+        </span>
         <span className="footer-name">Bhanu Prakash Reddy</span>
       </div>
 
       {/* CENTER */}
       <div className="footer-center">
         <div>
-          <a href="#home">Home</a>
-          <a href="#projects">Projects</a>
+          <Link to="/#home">Home</Link>
+          <Link to="/#projects">Projects</Link>
           <Link to="/gallery">Gallery</Link>
-          <a href="#contact">Contact</a>
+          <Link to="/#contact">Contact</Link>
         </div>
 
         <p className="made-by">Made by Bhanu Prakash Reddy</p>
@@ -26,7 +27,7 @@ function Footer() {
 
       {/* RIGHT */}
       <div className="footer-right">
-        <a href="mailto:ybhanuprakashreddy2004@gmail.com">
+        <a href="mailto:ybhanuprakashreddy2004@gmail.com" aria-label="Email">
           <FaEnvelope />
         </a>
 
@@ -34,6 +35,7 @@ function Footer() {
           href="https://github.com/bhanuprakash0928" 
           target="_blank" 
           rel="noreferrer"
+          aria-label="GitHub"
         >
           <FaGithub />
         </a>
@@ -42,6 +44,7 @@ function Footer() {
           href="https://www.linkedin.com/in/bhanu-prakash-reddy-1ab924321/" 
           target="_blank" 
           rel="noreferrer"
+          aria-label="LinkedIn"
         >
           <FaLinkedin />
         </a>
@@ -49,9 +52,9 @@ function Footer() {
 
       {/* SCROLL TOP */}
       <div className="scroll-top">
-        <a href="#home">
+        <Link to="/#home" aria-label="Back to top">
           <FaArrowUp />
-        </a>
+        </Link>
       </div>
 
     </footer>

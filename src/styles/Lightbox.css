@@ -1,0 +1,108 @@
+/* =====================================================================
+   LIGHTBOX - full-size preview for certificates, screenshots, gallery
+   (a dark backdrop is used on purpose so the picture stands out)
+   ===================================================================== */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 4000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px;
+  background: rgba(15, 23, 42, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: lightboxFade 0.25s ease both;
+  text-align: left;
+}
+@keyframes lightboxFade { from { opacity: 0; } to { opacity: 1; } }
+
+.lightbox-figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  max-width: 100%;
+  margin: 0;
+}
+
+.lightbox-img {
+  display: block;
+  max-width: min(92vw, 1700px);
+  max-height: calc(100vh - 150px);
+  max-height: calc(100svh - 150px);
+  width: auto;
+  height: auto;
+  object-fit: contain; /* keeps the original proportions and quality */
+  border-radius: 8px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+  animation: lightboxImg 0.35s var(--ease) both;
+}
+@keyframes lightboxImg {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.lightbox-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  width: 100%;
+  font-size: 14px;
+  color: #cbd5e1;
+}
+.lightbox-title { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.lightbox-title strong { font-size: 15px; color: #fff; }
+
+.lightbox-links { display: flex; align-items: center; gap: 18px; }
+.lightbox-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #a5b4fc;
+  transition: color 0.3s;
+}
+.lightbox-links a:hover { color: #fff; }
+.lightbox-links svg { font-size: 11px; }
+.lightbox-count { font-variant-numeric: tabular-nums; }
+
+.lightbox-close,
+.lightbox-nav {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  font-size: 16px;
+  color: #fff;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: background 0.3s, transform 0.3s var(--ease);
+}
+.lightbox-close:hover,
+.lightbox-nav:hover { background: var(--primary-color); }
+.lightbox-close:hover { transform: rotate(90deg); }
+
+.lightbox-close { position: absolute; top: 18px; right: 18px; z-index: 2; }
+
+@media (max-width: 700px) {
+  .lightbox { padding: 64px 10px 16px; }
+  .lightbox-img { max-width: 100%; max-height: calc(100svh - 190px); }
+  .lightbox-close { top: 12px; right: 12px; }
+  .lightbox-nav {
+    position: absolute;
+    bottom: 14px;
+    width: 42px;
+    height: 42px;
+  }
+  .lightbox-nav.prev { left: 14px; }
+  .lightbox-nav.next { right: 14px; }
+  .lightbox-caption { padding-bottom: 54px; }
+}

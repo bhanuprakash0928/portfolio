@@ -140,7 +140,7 @@
 
 /* ================= MOBILE ================= */
 
-@media(max-width:768px){
+@media(max-width:1050px){  /* was 768px - links overflowed the bar on tablets/small laptops */
 
 .navbar{
 
@@ -194,4 +194,17 @@ display:flex;
 
 }
 
+}
+
+/* ================= ADDITIONS (YB logo + button hamburger) ================= */
+
+.logo-box img{
+    width:28px;
+    height:auto;
+}
+
+.menu-icon{
+    background:none;
+    padding:0;
+    line-height:1;
 }

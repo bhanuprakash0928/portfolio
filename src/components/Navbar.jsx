@@ -1,59 +1,49 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import Logo from "./Logo.jsx";
 import "../styles/Navbar.css";
+
+const links = [
+  { label: "Home", to: "/" },
+  { label: "Skills", to: "/#skills" },
+  { label: "Education", to: "/#education" },
+  { label: "Projects", to: "/#projects" },
+  { label: "Certificates", to: "/#certificates" },
+  { label: "Gallery", to: "/gallery" },
+  { label: "Contact", to: "/#contact" },
+];
+
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const close = () => setMenuOpen(false);
 
   return (
-    <nav className="navbar">
-
+    <nav className="navbar" aria-label="Main navigation">
       {/* Logo */}
-      <div className="logo">
-        <div className="logo-box">B</div>
-        <h2>Bhanu Prakash Reddy</h2>
-      </div>
+      <Logo onClick={close} />
 
-      {/* Mobile Menu */}
-      <div
+      {/* Mobile menu button */}
+      <button
+        type="button"
         className="menu-icon"
         onClick={() => setMenuOpen(!menuOpen)}
+        aria-expanded={menuOpen}
+        aria-controls="nav-links"
+        aria-label={menuOpen ? "Close menu" : "Open menu"}
       >
-        ☰
-      </div>
+        {menuOpen ? "✕" : "☰"}
+      </button>
 
       {/* Navigation */}
-      <ul className={menuOpen ? "nav-links active" : "nav-links"}>
-
-        <li>
-          <a href="/">Home</a>
-        </li>
-
-        <li>
-          <a href="#skills">Skills</a>
-        </li>
-
-        <li>
-          <a href="#education">Education</a>
-        </li>
-
-        <li>
-          <a href="#projects">Projects</a>
-        </li>
-
-        <li>
-          <a href="#certificates">Certificates</a>
-        </li>
-
-        <li>
-          <Link to="/gallery">Gallery</Link>
-        </li>
-
-        <li>
-          <a href="#contact">Contact</a>
-        </li>
-
+      <ul id="nav-links" className={menuOpen ? "nav-links active" : "nav-links"}>
+        {links.map((item) => (
+          <li key={item.label}>
+            <Link to={item.to} onClick={close}>
+              {item.label}
+            </Link>
+          </li>
+        ))}
       </ul>
-
     </nav>
   );
 }

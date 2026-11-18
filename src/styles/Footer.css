@@ -135,3 +135,9 @@
 }
 
 }
+
+/* YB logo inside the original gradient tile */
+.code-symbol img{
+    width:26px;
+    height:auto;
+}
