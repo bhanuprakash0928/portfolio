@@ -1,0 +1,210 @@
+/* =====================================================================
+   THEME + ACCENT TOKENS  -  the single place where colours live.
+
+   <html data-theme="dark|light" data-accent="violet|cyan|pink|blue|green|orange">
+   is set by the inline script in index.html (no flash) and by ThemeProvider.
+
+   Every other stylesheet only uses the variables below, so a new theme or
+   accent colour is just another block in this file.
+
+   *-rgb variables are "r, g, b" channels so components can write
+   rgba(var(--c1-rgb), .2) and still follow the chosen accent.
+   ===================================================================== */
+
+/* ---------- DARK (default) : neutrals ---------- */
+:root {
+  color-scheme: dark;
+
+  --bg: #07070f;
+  --bg-soft: #0c0c1a;
+  --bg-rgb: 7, 7, 15;
+
+  --fg-rgb: 255, 255, 255;            /* tint colour for glass, borders, hovers */
+  --text: #f3f5ff;
+  --text-strong: #ffffff;
+  --text-soft: #c4cbe0;
+  --muted: #a9b2cb;
+  --faint: #7b84a0;
+  --placeholder: #6f7894;
+  --on-accent: #ffffff;               /* text on accent-coloured buttons */
+  --btn-text-shadow: 0 1px 2px rgba(7, 7, 15, 0.4);  /* default violet: white text over the cyan stop */
+
+  --surface: rgba(var(--fg-rgb), 0.05);
+  --surface-2: rgba(var(--fg-rgb), 0.09);
+  --line: rgba(var(--fg-rgb), 0.10);
+
+  --card-bg: linear-gradient(160deg, rgba(var(--fg-rgb), 0.08), rgba(var(--fg-rgb), 0.025));
+  --panel: rgba(12, 12, 26, 0.62);          /* navbar glass */
+  --panel-solid: rgb(12, 12, 26);           /* mobile menu */
+  --panel-pop: rgba(14, 14, 28, 0.94);      /* popovers, tooltips, toasts */
+  --panel-footer: rgba(8, 8, 18, 0.8);
+  --option-bg: #12122a;
+
+  --shadow-rgb: 0, 0, 0;
+  --shadow-k: 1;          /* strength of neutral drop shadows */
+  --glow-k: 1;            /* strength of coloured glows */
+  --aurora-k: 1;          /* strength of the aurora background */
+  --orb-opacity: 1;
+  --grid-alpha: 0.03;
+
+  --logo-tile: rgba(var(--c1-rgb), 0.16);
+
+  --grad: linear-gradient(110deg, var(--c1), var(--c2) 50%, var(--c3));
+
+  /* ---------- accent: violet (default) ---------- */
+  --c1: #7c5cff; --c1-rgb: 124, 92, 255;
+  --c2: #22d3ee; --c2-rgb: 34, 211, 238;
+  --c3: #ff4fa3; --c3-rgb: 255, 79, 163;
+  --c4: #b79cff; --c4-rgb: 183, 156, 255;
+  --accent-ink: #e3dfff;  /* readable accent text on tinted chips */
+}
+
+/* ---------- LIGHT : neutrals (clean white, soft shadows, no glow) ---------- */
+html[data-theme="light"] {
+  color-scheme: light;
+
+  --bg: #f6f8fc;
+  --bg-soft: #ffffff;
+  --bg-rgb: 246, 248, 252;
+
+  --fg-rgb: 15, 23, 42;
+  --text: #0f172a;
+  --text-strong: #0b1220;
+  --text-soft: #334155;
+  --muted: #475569;
+  --faint: #64748b;
+  --placeholder: #94a3b8;
+  --on-accent: #ffffff;
+  --btn-text-shadow: none;
+
+  --surface: rgba(var(--fg-rgb), 0.04);
+  --surface-2: rgba(var(--fg-rgb), 0.07);
+  --line: rgba(var(--fg-rgb), 0.11);
+
+  --card-bg: linear-gradient(160deg, #ffffff, #fbfcff);
+  --panel: rgba(255, 255, 255, 0.82);
+  --panel-solid: #ffffff;
+  --panel-pop: rgba(255, 255, 255, 0.97);
+  --panel-footer: rgba(255, 255, 255, 0.88);
+  --option-bg: #ffffff;
+
+  --shadow-rgb: 15, 23, 42;
+  --shadow-k: 0.18;
+  --glow-k: 0.3;
+  --aurora-k: 0.22;
+  --orb-opacity: 0;
+  --grid-alpha: 0.05;
+
+  --logo-tile: var(--c1);
+}
+
+/* ---------- ACCENTS : dark ----------  (violet is the :root default above) */
+html[data-accent="cyan"] {
+  --on-accent: #07070f; --btn-text-shadow: none;  /* bright palette: dark text keeps buttons readable */
+  --c1: #22d3ee; --c1-rgb: 34, 211, 238;
+  --c2: #3b82f6; --c2-rgb: 59, 130, 246;
+  --c3: #a78bfa; --c3-rgb: 167, 139, 250;
+  --c4: #67e8f9; --c4-rgb: 103, 232, 249;
+  --accent-ink: #cffafe;
+}
+html[data-accent="pink"] {
+  --on-accent: #07070f; --btn-text-shadow: none;  /* bright palette: dark text keeps buttons readable */
+  --c1: #ff4fa3; --c1-rgb: 255, 79, 163;
+  --c2: #a855f7; --c2-rgb: 168, 85, 247;
+  --c3: #fb7185; --c3-rgb: 251, 113, 133;
+  --c4: #f9a8d4; --c4-rgb: 249, 168, 212;
+  --accent-ink: #fce7f3;
+}
+html[data-accent="blue"] {
+  --on-accent: #07070f; --btn-text-shadow: none;  /* bright palette: dark text keeps buttons readable */
+  --c1: #3b82f6; --c1-rgb: 59, 130, 246;
+  --c2: #22d3ee; --c2-rgb: 34, 211, 238;
+  --c3: #818cf8; --c3-rgb: 129, 140, 248;
+  --c4: #93c5fd; --c4-rgb: 147, 197, 253;
+  --accent-ink: #dbeafe;
+}
+html[data-accent="green"] {
+  --on-accent: #07070f; --btn-text-shadow: none;  /* bright palette: dark text keeps buttons readable */
+  --c1: #10b981; --c1-rgb: 16, 185, 129;
+  --c2: #2dd4bf; --c2-rgb: 45, 212, 191;
+  --c3: #a3e635; --c3-rgb: 163, 230, 53;
+  --c4: #6ee7b7; --c4-rgb: 110, 231, 183;
+  --accent-ink: #d1fae5;
+}
+html[data-accent="orange"] {
+  --on-accent: #07070f; --btn-text-shadow: none;  /* bright palette: dark text keeps buttons readable */
+  --c1: #fb923c; --c1-rgb: 251, 146, 60;
+  --c2: #fbbf24; --c2-rgb: 251, 191, 36;
+  --c3: #f43f5e; --c3-rgb: 244, 63, 94;
+  --c4: #fdba74; --c4-rgb: 253, 186, 116;
+  --accent-ink: #ffedd5;
+}
+
+/* ---------- ACCENTS : light (deeper tones so text keeps good contrast) ---------- */
+html[data-theme="light"][data-accent="violet"] {
+  --on-accent: #ffffff; --btn-text-shadow: none;
+  --c1: #6d4aff; --c1-rgb: 109, 74, 255;
+  --c2: #0e7490; --c2-rgb: 14, 116, 144;
+  --c3: #be185d; --c3-rgb: 190, 24, 93;
+  --c4: #8b5cf6; --c4-rgb: 139, 92, 246;
+  --accent-ink: #5b3fd1;
+}
+html[data-theme="light"][data-accent="cyan"] {
+  --on-accent: #ffffff; --btn-text-shadow: none;
+  --c1: #0e7490; --c1-rgb: 14, 116, 144;
+  --c2: #4f46e5; --c2-rgb: 79, 70, 229;
+  --c3: #7c3aed; --c3-rgb: 124, 58, 237;
+  --c4: #06b6d4; --c4-rgb: 6, 182, 212;
+  --accent-ink: #155e75;
+}
+html[data-theme="light"][data-accent="pink"] {
+  --on-accent: #ffffff; --btn-text-shadow: none;
+  --c1: #be185d; --c1-rgb: 190, 24, 93;
+  --c2: #7c3aed; --c2-rgb: 124, 58, 237;
+  --c3: #be123c; --c3-rgb: 190, 18, 60;
+  --c4: #ec4899; --c4-rgb: 236, 72, 153;
+  --accent-ink: #9d174d;
+}
+html[data-theme="light"][data-accent="blue"] {
+  --on-accent: #ffffff; --btn-text-shadow: none;
+  --c1: #2563eb; --c1-rgb: 37, 99, 235;
+  --c2: #0e7490; --c2-rgb: 14, 116, 144;
+  --c3: #4f46e5; --c3-rgb: 79, 70, 229;
+  --c4: #3b82f6; --c4-rgb: 59, 130, 246;
+  --accent-ink: #1d4ed8;
+}
+html[data-theme="light"][data-accent="green"] {
+  --on-accent: #ffffff; --btn-text-shadow: none;
+  --c1: #047857; --c1-rgb: 4, 120, 87;
+  --c2: #0f766e; --c2-rgb: 15, 118, 110;
+  --c3: #4d7c0f; --c3-rgb: 77, 124, 15;
+  --c4: #10b981; --c4-rgb: 16, 185, 129;
+  --accent-ink: #065f46;
+}
+html[data-theme="light"][data-accent="orange"] {
+  --on-accent: #ffffff; --btn-text-shadow: none;
+  --c1: #c2410c; --c1-rgb: 194, 65, 12;
+  --c2: #b45309; --c2-rgb: 180, 83, 9;
+  --c3: #b91c1c; --c3-rgb: 185, 28, 28;
+  --c4: #f97316; --c4-rgb: 249, 115, 22;
+  --accent-ink: #9a3412;
+}
+
+/* ---------- Light mode: calm, static background (no moving glow) ---------- */
+html[data-theme="light"] body::before { animation: none; }
+html[data-theme="light"] .bg-orb { animation: none; }
+
+/* ---------- Smooth theme change ----------
+   Browsers with the View Transitions API cross-fade the whole page; others
+   get a short colour transition via the temporary .theme-switching class. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.55s;
+  animation-timing-function: ease;
+}
+html.theme-switching *,
+html.theme-switching *::before,
+html.theme-switching *::after {
+  transition: background-color 0.45s ease, color 0.45s ease, border-color 0.45s ease,
+    box-shadow 0.45s ease, fill 0.45s ease, opacity 0.45s ease !important;
+}

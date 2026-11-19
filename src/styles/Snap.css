@@ -1,17 +1,13 @@
 /* =====================================================================
    FULL-SCREEN SCROLL SNAP  (Projects + Certificates)
-   Pure CSS:  scroll-snap-type: y mandatory  +  scroll-snap-align: start.
-   Styled with the original light theme (white, indigo/violet, soft shadows).
+
+   Pure CSS:   scroll-snap-type: y mandatory  on the page,
+               scroll-snap-align: start       on every screen.
+   Mouse wheel, touch and keyboard all snap natively, no JS scroll hijacking.
+   The class `snap-home` is added to <html> only while the home page is
+   mounted (see hooks/useSnapScroll.js), so other pages scroll normally.
    ===================================================================== */
 
-:root {
-  --ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --card-border: rgba(15, 23, 42, 0.08);
-  --card-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-  --card-shadow-hover: 0 24px 50px rgba(99, 102, 241, 0.2);
-}
-
-/* The class is added to <html> only while the home page is mounted */
 html.snap-home {
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
@@ -20,8 +16,10 @@ html.snap-home {
 /* Normal sections are snap points too. Sections taller than the screen can
    still be scrolled through freely; snapping happens at their edges. */
 html.snap-home .hero,
+html.snap-home .career-section,
 html.snap-home .skills-section,
 html.snap-home .education-section,
+html.snap-home .projects-section,
 html.snap-home .contact-section {
   scroll-snap-align: start;
 }
@@ -33,7 +31,6 @@ html.snap-home .footer {
 
 .snap-section {
   position: relative;
-  background: var(--white);
 }
 
 .snap-item {
@@ -42,31 +39,18 @@ html.snap-home .footer {
   align-items: center;
   min-height: 100vh;
   min-height: 100svh; /* exactly one screen (grows only if content is taller) */
-  padding: 120px 8% 80px;
+  padding: 112px 8% 72px;
   scroll-snap-align: start;
-  scroll-snap-stop: always; /* one scroll gesture = one screen */
-  border-top: 1px solid var(--card-border);
+  scroll-snap-stop: always; /* one scroll gesture = one screen, never skip */
+  border-top: 1px solid var(--line);
 }
 
 .snap-inner {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto;
-  text-align: left;
 }
 
-/* Subtle fade-in when a screen arrives (supported browsers only) */
-@supports (animation-timeline: view()) {
-  .snap-inner {
-    animation: snapIn linear both;
-    animation-timeline: view();
-    animation-range: entry 5% entry 55%;
-  }
-}
-@keyframes snapIn {
-  from { opacity: 0; translate: 0 36px; }
-  to   { opacity: 1; translate: 0 0; }
-}
 
 /* "01 / 04" label row */
 .snap-eyebrow {
@@ -74,21 +58,22 @@ html.snap-home .footer {
   justify-content: space-between;
   gap: 16px;
   margin-bottom: 26px;
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 600;
-  letter-spacing: 2px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--muted);
 }
 .snap-eyebrow span:last-child {
-  color: var(--primary-color);
+  color: var(--text);
   font-variant-numeric: tabular-nums;
 }
 
 /* ---------- Dot rail (current screen + jump) ---------- */
 
 .snap-rail {
-  /* Fixed to the right edge, only visible while its own section is on screen */
+  /* Fixed to the right edge, but only visible while its own section is on
+     screen (SnapSection toggles .is-visible), so it never leaks elsewhere. */
   position: fixed;
   top: 50%;
   right: clamp(10px, 2vw, 28px);
@@ -122,14 +107,14 @@ html.snap-home .footer {
   width: 8px;
   height: 8px;
   border-radius: 999px;
-  background: rgba(99, 102, 241, 0.28);
+  background: rgba(var(--fg-rgb), 0.28);
   transform: translate(-50%, -50%);
   transition: height 0.35s var(--ease), background 0.3s;
 }
-.snap-rail button:hover::before { background: rgba(99, 102, 241, 0.6); }
+.snap-rail button:hover::before { background: rgba(var(--fg-rgb), 0.6); }
 .snap-rail button.is-active::before {
   height: 26px;
-  background: var(--primary-color);
+  background: var(--c1);
 }
 
 /* tooltip with the screen name (desktop) */
@@ -139,13 +124,12 @@ html.snap-home .footer {
   right: 30px;
   padding: 6px 12px;
   font-size: 12.5px;
-  font-weight: 600;
+  font-weight: 500;
   white-space: nowrap;
-  color: var(--text-main);
+  color: var(--text);
   border-radius: 8px;
-  background: var(--white);
-  border: 1px solid var(--card-border);
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
+  background: var(--panel-pop);
+  border: 1px solid var(--line);
   opacity: 0;
   pointer-events: none;
   transform: translate(6px, -50%);
@@ -168,9 +152,9 @@ html.snap-home .footer {
   align-items: center;
   gap: 6px;
   font-size: 11px;
-  letter-spacing: 2px;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--muted);
   opacity: 0.7;
   transform: translateX(-50%);
   pointer-events: none;
@@ -185,7 +169,7 @@ html.snap-home .footer {
 }
 
 @media (max-width: 900px) {
-  .snap-item { padding: 104px 6% 64px; }
+  .snap-item { padding: 96px 6% 64px; }
   .snap-rail { right: 4px; }
   .snap-rail ul { gap: 2px; }
   .snap-rail button { width: 18px; height: 18px; }
@@ -197,4 +181,29 @@ html.snap-home .footer {
 
 @media (prefers-reduced-motion: reduce) {
   html.snap-home { scroll-behavior: auto; }
+}
+
+
+/* ---------------------------------------------------------------------
+   LAYERS: every main section is (at least) one screen tall and its content
+   is centred. Taller content simply makes the layer taller, so nothing is
+   ever cut off on small screens.
+   --------------------------------------------------------------------- */
+.career-section,
+.skills-section,
+.education-section,
+.projects-section,
+.contact-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100svh;
+}
+.career-section > *,
+.skills-section > *,
+.education-section > *,
+.projects-section > *,
+.contact-section > * {
+  width: 100%;
 }

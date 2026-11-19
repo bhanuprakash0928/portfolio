@@ -1,210 +1,161 @@
-/* ================= NAVBAR ================= */
+/* =====================================================================
+   NAVBAR – floating glass bar with the YB logo
+   ===================================================================== */
 
-.navbar{
-    position:fixed;
-    top:20px;
-    left:50%;
-    transform:translateX(-50%);
-
-    width:92%;
-    max-width:1300px;
-    height:75px;
-
-    background:rgba(255,255,255,0.85);
-    backdrop-filter:blur(15px);
-
-    border-radius:18px;
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    padding:0 40px;
-
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
-
-    z-index:1000;
+.navbar {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 92%;
+  max-width: 1240px;
+  height: 68px;
+  padding: 0 14px;
+  transform: translateX(-50%);
+  background: var(--panel);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  box-shadow: 0 18px 50px -18px rgba(var(--shadow-rgb), calc(0.7 * var(--shadow-k)));
+  animation: navDrop 0.9s var(--ease) backwards;
+}
+@keyframes navDrop {
+  from { opacity: 0; translate: 0 -60px; }
+  to   { opacity: 1; translate: 0 0; }
 }
 
-/* ================= LOGO ================= */
+/* ---------- Logo ---------- */
 
-.logo{
-    display:flex;
-    align-items:center;
-    gap:15px;
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.logo-box{
+.logo-mark {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 13px;
+  background: var(--logo-tile);
+  border: 1px solid rgba(var(--c1-rgb), 0.5);
+  transition: background 0.35s, border-color 0.35s, transform 0.45s var(--ease), box-shadow 0.35s;
+}
+.logo-mark img {
+  display: block;
+  width: 26px;
+  height: auto;
+  transition: transform 0.45s var(--ease);
+}
+.logo:hover .logo-mark,
+.logo:focus-visible .logo-mark {
+  background: var(--c1);
+  border-color: var(--c1);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -8px rgba(var(--c1-rgb), calc(0.8 * var(--glow-k)));
+}
+.logo:hover .logo-mark img { transform: scale(1.08); }
 
-    width:52px;
-    height:52px;
-
-    border-radius:50%;
-
-    background:linear-gradient(135deg,#2563eb,#7c3aed);
-
-    color:white;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    font-size:24px;
-    font-weight:700;
-
-    box-shadow:0 10px 25px rgba(37,99,235,.35);
-
-    transition:.4s;
+.logo-name {
+  font-family: var(--font-head);
+  font-size: 16.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text-strong);
 }
 
-.logo-box:hover{
+/* ---------- Links ---------- */
 
-    transform:rotate(360deg) scale(1.1);
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.nav-links li a {
+  position: relative;
+  display: block;
+  padding: 9px 15px;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--muted);
+  border-radius: 999px;
+  transition: color 0.3s, background 0.3s;
+}
+.nav-links li a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--c1);
+  transform: translateX(-50%);
+  transition: width 0.4s var(--ease);
+}
+.nav-links li a:hover { color: var(--text-strong); background: var(--surface-2); }
+.nav-links li a:hover::after { width: 36%; }
 
+/* ---------- Mobile menu ---------- */
+
+.menu-icon {
+  display: none;
+  width: 44px;
+  height: 44px;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--text-strong);
+  background: transparent;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+.menu-icon:hover { background: var(--surface-2); }
+
+@media (max-width: 1240px) {
+  .navbar { top: 10px; width: 95%; border-radius: 26px; }
+  .menu-icon { display: block; }
+
+  .nav-links {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    gap: 2px;
+    width: 100%;
+    padding: 14px;
+    background: var(--panel-solid);
+    backdrop-filter: blur(22px);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    box-shadow: 0 24px 60px rgba(var(--shadow-rgb), calc(0.6 * var(--shadow-k)));
+  }
+  .nav-links.active { display: flex; animation: menuOpen 0.35s var(--ease); }
+  .nav-links li { width: 100%; }
+  .nav-links li a { padding: 13px 18px; text-align: center; }
 }
 
-.logo h2{
-
-    font-size:22px;
-    font-weight:700;
-
-    color:#222;
+@keyframes menuOpen {
+  from { opacity: 0; translate: 0 -14px; }
+  to   { opacity: 1; translate: 0 0; }
 }
 
-/* ================= MENU ================= */
-
-.nav-links{
-
-    display:flex;
-    align-items:center;
-    gap:35px;
-
-    list-style:none;
+/* full name: wraps onto two lines inside the collapsed (mobile/tablet) bar */
+@media (max-width: 1240px) {
+  .logo-name { max-width: 190px; font-size: 15px; line-height: 1.15; }
+}
+@media (max-width: 420px) {
+  .logo-name { max-width: 150px; font-size: 13.5px; }
 }
 
-.nav-links li a{
-
-    color:#333;
-
-    font-size:16px;
-    font-weight:600;
-
-    text-decoration:none;
-
-    position:relative;
-
-    transition:.3s;
-}
-
-.nav-links li a::after{
-
-    content:"";
-
-    position:absolute;
-
-    left:0;
-    bottom:-6px;
-
-    width:0;
-    height:3px;
-
-    background:#2563eb;
-
-    border-radius:20px;
-
-    transition:.3s;
-}
-
-.nav-links li a:hover{
-
-    color:#2563eb;
-}
-
-.nav-links li a:hover::after{
-
-    width:100%;
-}
-
-/* ================= HAMBURGER ================= */
-
-.menu-icon{
-
-    display:none;
-
-    font-size:32px;
-
-    cursor:pointer;
-
-    color:#2563eb;
-}
-
-/* ================= MOBILE ================= */
-
-@media(max-width:1050px){  /* was 768px - links overflowed the bar on tablets/small laptops */
-
-.navbar{
-
-padding:0 20px;
-
-top:10px;
-
-width:95%;
-
-}
-
-.logo h2{
-
-display:none;
-
-}
-
-.menu-icon{
-
-display:block;
-
-}
-
-.nav-links{
-
-position:absolute;
-
-top:85px;
-
-left:0;
-
-width:100%;
-
-background:white;
-
-border-radius:20px;
-
-display:none;
-
-flex-direction:column;
-
-padding:25px 0;
-
-box-shadow:0 10px 30px rgba(0,0,0,.15);
-
-}
-
-.nav-links.active{
-
-display:flex;
-
-}
-
-}
-
-/* ================= ADDITIONS (YB logo + button hamburger) ================= */
-
-.logo-box img{
-    width:28px;
-    height:auto;
-}
-
-.menu-icon{
-    background:none;
-    padding:0;
-    line-height:1;
+.logo-name {
+  background: linear-gradient(100deg, var(--text-strong) 40%, var(--c4));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

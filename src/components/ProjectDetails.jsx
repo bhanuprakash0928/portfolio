@@ -30,7 +30,7 @@ function ProjectDetails() {
   useEffect(() => {
     if (!project) return undefined;
     const previousTitle = document.title;
-    document.title = `${project.title} | Bhanu Prakash Reddy`;
+    document.title = `${project.title} | Yettapu Bhanu Prakash Reddy`;
     return () => {
       document.title = previousTitle;
     };

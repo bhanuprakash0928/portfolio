@@ -83,7 +83,9 @@ function SnapSection({ id, label, items, getKey, getLabel, renderItem }) {
           className="snap-item"
           aria-label={getLabel(item)}
         >
-          <div className="snap-inner">{renderItem(item, i, items.length)}</div>
+          <div className="snap-inner" data-reveal>
+            {renderItem(item, i, items.length)}
+          </div>
           {i < items.length - 1 && (
             <span className="snap-hint" aria-hidden="true">
               Scroll

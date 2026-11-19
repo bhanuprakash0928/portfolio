@@ -10,7 +10,7 @@ function Footer() {
         <span className="code-symbol">
           <img src="/logo-yb.png" alt="" width="24" height="21" />
         </span>
-        <span className="footer-name">Bhanu Prakash Reddy</span>
+        <span className="footer-name">Yettapu Bhanu Prakash Reddy</span>
       </div>
 
       {/* CENTER */}
@@ -22,7 +22,7 @@ function Footer() {
           <Link to="/#contact">Contact</Link>
         </div>
 
-        <p className="made-by">Made by Bhanu Prakash Reddy</p>
+        <p className="made-by">Made by Yettapu Bhanu Prakash Reddy</p>
       </div>
 
       {/* RIGHT */}

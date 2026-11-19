@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 import Navbar from "./components/Navbar.jsx";
 import About from "./components/About.jsx";
+import CareerOverview from "./components/CareerOverview.jsx";
+import Background from "./components/Background.jsx";
 import Education from "./components/Education.jsx";
 import Skills from "./components/Skills.jsx";
 import Footer from "./components/Foot.jsx";
@@ -14,13 +16,16 @@ import Certificates from "./components/Certificates.jsx";
 import Gallery from "./components/Gallery.jsx";
 import ScrollManager from "./components/ScrollManager.jsx";
 import { useSnapScroll } from "./hooks/useSnapScroll.js";
+import { useScrollReveal } from "./hooks/useScrollReveal.js";
 
 function Home() {
-  useSnapScroll(); // full-screen scroll snapping for Projects & Certificates
+  useSnapScroll(); // layer-by-layer scroll snapping
+  useScrollReveal(); // entrance animations when sections scroll into view
 
   return (
     <>
       <About />
+      <CareerOverview />
       <Skills />
       <Education />
       <Projects />
@@ -46,6 +51,7 @@ function App() {
   return (
     <Router>
       <ScrollManager />
+      <Background />
       <Navbar />
 
       <Routes>

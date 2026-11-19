@@ -170,11 +170,29 @@ export const projects = [
     imageFolder: "projects/personal-portfolio",
   },
 
-  /* Folders already created for these two – add their details here when ready
-     (see the template at the top of this file):
-       public/images/projects/video-slot-booking/
-       public/images/projects/smart-exam-allocation/
-  */
+  {
+    slug: "video-slot-booking",
+    title: "VideoSlotBooking",
+    category: "Full-Stack Web Application",
+    shortDescription:
+      "A video slot booking application built with Java, Spring Boot and SQL, with an HTML, CSS and JavaScript front end.",
+    technologies: ["Java", "Spring Boot", "SQL", "HTML", "CSS", "JavaScript"],
+    github: null, // add your repository link here
+    live: null,
+    imageFolder: "projects/video-slot-booking",
+  },
+
+  {
+    slug: "smart-exam-hall-allocator",
+    title: "Smart University Exam Hall Seating & Collision-Free Allocator",
+    category: "Software Project",
+    shortDescription:
+      "A system that seats university exam candidates in exam halls with collision-free allocation.",
+    github: null, // add your repository link here
+    live: null,
+    imageFolder: "projects/smart-exam-allocation",
+  },
+
 ]
 
 export const getProject = (slug) => projects.find((p) => p.slug === slug)

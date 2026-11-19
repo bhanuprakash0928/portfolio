@@ -1,6 +1,5 @@
 /* =====================================================================
-   LIGHTBOX - full-size preview for certificates, screenshots, gallery
-   (a dark backdrop is used on purpose so the picture stands out)
+   LIGHTBOX – full-size preview for certificates, screenshots, gallery
    ===================================================================== */
 
 .lightbox {
@@ -12,11 +11,10 @@
   justify-content: center;
   gap: 12px;
   padding: 24px;
-  background: rgba(15, 23, 42, 0.92);
+  background: rgba(4, 4, 10, 0.92);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   animation: lightboxFade 0.25s ease both;
-  text-align: left;
 }
 @keyframes lightboxFade { from { opacity: 0; } to { opacity: 1; } }
 
@@ -39,7 +37,7 @@
   height: auto;
   object-fit: contain; /* keeps the original proportions and quality */
   border-radius: 8px;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
   animation: lightboxImg 0.35s var(--ease) both;
 }
 @keyframes lightboxImg {
@@ -55,7 +53,7 @@
   gap: 10px 24px;
   width: 100%;
   font-size: 14px;
-  color: #cbd5e1;
+  color: var(--muted);
 }
 .lightbox-title { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 .lightbox-title strong { font-size: 15px; color: #fff; }
@@ -65,7 +63,7 @@
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  color: #a5b4fc;
+  color: var(--c2);
   transition: color 0.3s;
 }
 .lightbox-links a:hover { color: #fff; }
@@ -82,12 +80,12 @@
   font-size: 16px;
   color: #fff;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   transition: background 0.3s, transform 0.3s var(--ease);
 }
 .lightbox-close:hover,
-.lightbox-nav:hover { background: var(--primary-color); }
+.lightbox-nav:hover { background: var(--c1); }
 .lightbox-close:hover { transform: rotate(90deg); }
 
 .lightbox-close { position: absolute; top: 18px; right: 18px; z-index: 2; }
@@ -96,6 +94,7 @@
   .lightbox { padding: 64px 10px 16px; }
   .lightbox-img { max-width: 100%; max-height: calc(100svh - 190px); }
   .lightbox-close { top: 12px; right: 12px; }
+  /* prev / next sit over the image corners on small screens */
   .lightbox-nav {
     position: absolute;
     bottom: 14px;

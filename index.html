@@ -10,13 +10,28 @@
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png?v=2" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2" />
 
+    <!-- Apply the saved theme/accent before the first paint (prevents a flash). Dark + violet by default. -->
+    <script>
+      (function () {
+        var root = document.documentElement, theme = "dark", accent = "violet";
+        try {
+          var t = localStorage.getItem("portfolio-theme");
+          var a = localStorage.getItem("portfolio-accent");
+          if (t === "light" || t === "dark") theme = t;
+          if (["violet", "cyan", "pink", "blue", "green", "orange"].indexOf(a) > -1) accent = a;
+        } catch (e) {}
+        root.setAttribute("data-theme", theme);
+        root.setAttribute("data-accent", accent);
+      })();
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f8fbff" />
+    <meta name="theme-color" content="#07070f" />
     <meta
       name="description"
       content="Portfolio of Yettapu Bhanu Prakash Reddy - Computer Science student skilled in Java, Spring Boot, AWS Cloud and Tableau data analytics."
     />
-    <title>Bhanu Prakash Reddy | Portfolio</title>
+    <title>Yettapu Bhanu Prakash Reddy | Portfolio</title>
   </head>
   <body>
     <div id="root"></div>

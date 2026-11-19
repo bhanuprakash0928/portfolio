@@ -56,6 +56,7 @@ function Skills() {
           </div>
           <ul>
             <li>Java Core</li>
+            <li>Python</li>
             <li>Data Structures</li>
             <li>Algorithms</li>
             <li>Object-Oriented Programming</li>
@@ -71,6 +72,16 @@ function Skills() {
             <li>VS Code</li>
             <li>Postman</li>
             <li>IntelliJ IDEA</li>
+          </ul>
+        </div>
+
+        <div className="skill-card slide-up" style={{ animationDelay: "0.6s" }}>
+          <div className="card-header">
+            <h3>Cloud & Analytics</h3>
+          </div>
+          <ul>
+            <li>AWS Cloud</li>
+            <li>Tableau</li>
           </ul>
         </div>
 

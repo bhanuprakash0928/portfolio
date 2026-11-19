@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import Lightbox from "./Lightbox.jsx";
+import { useScrollReveal } from "../hooks/useScrollReveal.js";
 import { getGalleryItems, getCategories, labelFor } from "../utils/gallery.js";
 import "../styles/Gallery.css";
 
@@ -8,12 +9,14 @@ function Gallery() {
   const allItems = useMemo(() => getGalleryItems(), []);
   const categories = useMemo(() => getCategories(allItems), [allItems]);
 
+  useScrollReveal();
+
   const [filter, setFilter] = useState("all");
   const [previewIndex, setPreviewIndex] = useState(null);
 
   useEffect(() => {
     const previousTitle = document.title;
-    document.title = "Gallery | Bhanu Prakash Reddy";
+    document.title = "Gallery | Yettapu Bhanu Prakash Reddy";
     return () => {
       document.title = previousTitle;
     };
@@ -33,7 +36,7 @@ function Gallery() {
 
   return (
     <main className="gallery-section">
-      <div className="gallery-header">
+      <div className="gallery-header" data-reveal>
         <span className="gallery-tag">Gallery</span>
         <h1>My Journey</h1>
         <p>

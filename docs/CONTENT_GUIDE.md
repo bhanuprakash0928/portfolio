@@ -43,14 +43,26 @@ Optional captions: `src/data/gallery.js` -> `captions`.
 1. Create `public/images/projects/<folder>/` and add screenshots.
 2. Copy the template at the top of `src/data/projects.js` into the `projects` array and fill it in.
    Leave out any field you don't need; its section is hidden automatically.
-   It appears as a new full-screen screen and gets its own page at `/projects/<slug>`.
+   It appears as a new card in the Projects grid and gets its own page at `/projects/<slug>`.
 
 ## 5. Add a new certificate
 Add an entry in `src/data/certificates.js` (template at the top) and its image under
-`public/images/certificates/`. It becomes a new full-screen screen automatically.
+`public/images/certificates/`. It becomes a new full-screen certificate screen automatically.
 
 ## Notes
 - File names with spaces work, but `kebab-case-names.png` are safest.
 - Deploying on Netlify: `public/_redirects` is included so `/gallery` and `/projects/<slug>`
   work on refresh. (Vercel: add a rewrite of all paths to `/index.html`.)
 - If Chrome still shows the old tab icon, hard refresh (Ctrl+Shift+R) or reopen the tab.
+
+## 6. Themes and accent colours
+Colours live in **one file**: `src/styles/Theme.css`. Every other stylesheet only uses its variables
+(`--bg`, `--text`, `--c1`...`--c4`, `rgba(var(--c1-rgb), .2)` and so on).
+
+- **Change the Dark or Light look:** edit the `:root` (dark) or `html[data-theme="light"]` block.
+- **Change an accent colour:** edit its `html[data-accent="..."]` (dark) and
+  `html[data-theme="light"][data-accent="..."]` (light) blocks.
+- **Add a new accent colour:** copy one pair of accent blocks in `Theme.css`, then add the name to
+  `ACCENTS` in `src/config/theme.js` and to the list in the inline script in `index.html`.
+- The choice is remembered in the browser (`localStorage`: `portfolio-theme`, `portfolio-accent`).
+  First-time visitors get Dark + Violet.

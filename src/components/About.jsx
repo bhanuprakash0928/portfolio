@@ -1,12 +1,13 @@
 import { FaMapMarkerAlt, FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import "../styles/About.css";
 
+/** Hero: text on the left, profile photo on the right. */
 function About() {
   return (
     <section className="hero" id="home">
       <div className="hero-container">
-        {/* LEFT SIDE – existing introduction, buttons and links */}
-        <div className="hero-text fade-in-up">
+        {/* LEFT SIDE */}
+        <div className="hero-text">
           <span className="badge">
             Java | Spring Boot | Maven | AWS Cloud | Data Analytics | Tableau
           </span>
@@ -28,7 +29,7 @@ function About() {
 
           <div className="hero-buttons">
             <a href="#contact" className="btn btn-primary">Contact Me →</a>
-            <a href="/resume.pdf" download className="btn btn-outline">
+            <a href="/resume.pdf" target="_blank" rel="noreferrer" className="btn btn-outline">
               Resume
             </a>
           </div>
@@ -51,27 +52,8 @@ function About() {
           </div>
         </div>
 
-        {/* CENTER – About Me / career overview */}
-        <div className="about-me">
-          <span className="about-me-label">Career Overview</span>
-          <h2>About Me</h2>
-          <p>
-            I am a Computer Science Engineering student at Mohan Babu University with a
-            strong interest in software development and data analytics. I have hands-on
-            experience developing Java-based applications using Spring Boot, Maven, SQL,
-            and REST APIs, along with knowledge of Python, JavaScript, HTML, CSS, and
-            React. I have also worked on data visualization projects using Tableau and
-            explored cloud computing through AWS Cloud Practitioner certification.
-            Through academic projects, internships, and hackathons, I have developed
-            problem-solving, teamwork, communication, and practical development skills. I
-            am continuously improving my technical knowledge and looking for opportunities
-            to begin my career as a Software Developer or Data Analyst, contribute to
-            real-world projects, and grow professionally.
-          </p>
-        </div>
-
-        {/* RIGHT SIDE – profile photo + location */}
-        <div className="hero-image float-anim">
+        {/* RIGHT SIDE */}
+        <div className="hero-image">
           <div className="image-wrapper">
             <img src="/profile.png" alt="Yettapu Bhanu Prakash Reddy" />
           </div>

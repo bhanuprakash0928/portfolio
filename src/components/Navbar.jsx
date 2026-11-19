@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "./Logo.jsx";
+import ThemeControls from "./ThemeControls.jsx";
 import "../styles/Navbar.css";
 
 const links = [
@@ -43,6 +44,9 @@ function Navbar() {
             </Link>
           </li>
         ))}
+        <li className="nav-controls">
+          <ThemeControls />
+        </li>
       </ul>
     </nav>
   );

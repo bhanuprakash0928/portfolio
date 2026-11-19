@@ -1,190 +1,138 @@
 /* =====================================================================
-   GALLERY - original header + new category filters and masonry grid
+   GALLERY – category filters + masonry grid
    ===================================================================== */
 
-.gallery-section{
-    padding:100px 8%;
-    background:#f8fbff;
-    min-height:100vh;
+.gallery-section {
+  min-height: 100vh;
+  padding: 140px 8% 96px;
 }
 
-.gallery-header{
-    text-align:center;
-    margin-bottom:60px;
-}
-
-.gallery-tag{
-    display:inline-block;
-    background:#dbeafe;
-    color:#2563eb;
-    padding:8px 18px;
-    border-radius:30px;
-    font-size:14px;
-    font-weight:600;
-    margin-bottom:15px;
-}
-
-/* the page title is an <h1> now; it keeps the original h2 look */
-.gallery-header h1{
-    font-size:38px;
-    font-weight:600;
-    color:#222;
-    margin:0 0 10px;
-}
-
-.gallery-header p{
-    color:#666;
-    max-width:650px;
-    margin:auto;
+.gallery-header h1 {
+  margin: 14px 0;
+  font-size: clamp(2rem, 4.4vw, 3.2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
 /* ---------- Filters ---------- */
 
-.gallery-filters{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:10px;
-    max-width:900px;
-    margin:-30px auto 44px;
+.gallery-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: -24px auto 48px;
+  max-width: 900px;
 }
 
-.filter-chip{
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-    padding:9px 18px;
-    font-size:14px;
-    font-weight:600;
-    color:#475569;
-    background:#fff;
-    border:1px solid rgba(15,23,42,.1);
-    border-radius:30px;
-    transition:.3s;
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted);
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  transition: color 0.3s, background 0.3s, border-color 0.3s, transform 0.3s var(--ease);
 }
-.filter-chip:hover{
-    color:#2563eb;
-    border-color:#2563eb;
-    transform:translateY(-2px);
+.filter-chip:hover { color: var(--text-strong); border-color: rgba(var(--c1-rgb), 0.5); transform: translateY(-2px); }
+.filter-chip.is-active {
+  color: var(--on-accent);
+  background: var(--c1);
+  border-color: var(--c1);
 }
-.filter-chip.is-active{
-    color:#fff;
-    background:#2563eb;
-    border-color:#2563eb;
-}
-.filter-count{
-    min-width:22px;
-    padding:1px 7px;
-    font-size:11.5px;
-    font-weight:700;
-    text-align:center;
-    border-radius:20px;
-    background:rgba(37,99,235,.12);
-}
-.filter-chip.is-active .filter-count{
-    background:rgba(255,255,255,.25);
+.filter-chip.is-active .filter-count { background: rgba(255, 255, 255, 0.25); }
+.filter-count {
+  min-width: 22px;
+  padding: 1px 7px;
+  font-size: 11.5px;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 999px;
+  background: rgba(var(--fg-rgb), 0.14);
 }
 
 /* ---------- Masonry ---------- */
 
-.gallery-masonry{
-    max-width:1240px;
-    margin:0 auto;
-    columns:3 290px;
-    column-gap:30px;
-    list-style:none;
+.gallery-masonry {
+  max-width: 1240px;
+  margin: 0 auto;
+  columns: 3 290px;
+  column-gap: 20px;
+  list-style: none;
 }
-.gallery-masonry li{
-    margin-bottom:30px;
-    break-inside:avoid;
-}
-
-.gallery-item{
-    position:relative;
-    display:block;
-    width:100%;
-    padding:0;
-    overflow:hidden;
-    cursor:zoom-in;
-    text-align:left;
-    background:#fff;
-    border-radius:18px;
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
-    transition:.4s;
-}
-.gallery-item:hover{
-    transform:translateY(-10px);
-    box-shadow:0 20px 40px rgba(37,99,235,.15);
-}
-.gallery-item img{
-    display:block;
-    width:100%;
-    height:auto;
-    transition:transform .6s ease;
-}
-.gallery-item:hover img{
-    transform:scale(1.04);
+.gallery-masonry li {
+  margin-bottom: 20px;
+  break-inside: avoid;
 }
 
-.gallery-overlay{
-    position:absolute;
-    inset:0;
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-end;
-    gap:4px;
-    padding:18px;
-    background:linear-gradient(to top,rgba(15,23,42,.88) 0%,rgba(15,23,42,0) 62%);
-    opacity:0;
-    transition:opacity .35s;
+.gallery-item {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  cursor: zoom-in;
+  text-align: left;
+  border-radius: 16px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  transition: transform 0.5s var(--ease), border-color 0.3s, box-shadow 0.5s var(--ease);
+}
+.gallery-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.8s var(--ease);
+}
+.gallery-item:hover {
+  transform: translateY(-5px);
+  border-color: rgba(var(--c1-rgb), 0.55);
+  box-shadow: 0 30px 60px -30px rgba(var(--c1-rgb), calc(0.5 * var(--glow-k)));
+}
+.gallery-item:hover img { transform: scale(1.04); }
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 4px;
+  padding: 18px;
+  background: linear-gradient(to top, rgba(7, 7, 15, 0.92) 0%, rgba(7, 7, 15, 0.1) 60%);
+  opacity: 0;
+  transition: opacity 0.35s;
 }
 .gallery-item:hover .gallery-overlay,
-.gallery-item:focus-visible .gallery-overlay{
-    opacity:1;
+.gallery-item:focus-visible .gallery-overlay { opacity: 1; }
+
+.gallery-cats {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c2);
 }
-.gallery-cats{
-    font-size:11px;
-    font-weight:700;
-    letter-spacing:1.5px;
-    text-transform:uppercase;
-    color:#a5b4fc;
-}
-.gallery-overlay strong{
-    font-size:1rem;
-    line-height:1.3;
-    color:#fff;
-}
-.gallery-desc{
-    font-size:.85rem;
-    line-height:1.45;
-    color:#e2e8f0;
-}
+.gallery-overlay strong { font-size: 1rem; line-height: 1.3; color: #fff; }
+.gallery-desc { font-size: 0.85rem; line-height: 1.45; color: var(--muted); }
 
 /* touch screens have no hover: keep captions visible */
-@media (hover:none){
-    .gallery-overlay{opacity:1;}
+@media (hover: none) {
+  .gallery-overlay { opacity: 1; }
 }
 
-.gallery-empty{
-    text-align:center;
-    color:#666;
-}
+.gallery-empty { text-align: center; color: var(--muted); }
+.gallery-empty code { color: var(--c2); }
 
-@media(max-width:768px){
-
-.gallery-section{
-    padding:80px 20px;
+@media (max-width: 768px) {
+  .gallery-section { padding: 112px 5% 72px; }
+  .gallery-masonry { columns: 1; }
+  .gallery-filters { margin-top: -28px; margin-bottom: 32px; }
 }
-
-.gallery-header h1{
-    font-size:30px;
-}
-
-.gallery-masonry{
-    columns:1;
-}
-
-}
-@media(min-width:769px) and (max-width:1000px){
-.gallery-masonry{columns:2;}
+@media (min-width: 769px) and (max-width: 1000px) {
+  .gallery-masonry { columns: 2; }
 }

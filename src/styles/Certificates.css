@@ -1,13 +1,12 @@
 /* =====================================================================
-   CERTIFICATES - one full-screen certificate per snap screen
-   Same white cards / blue accents as the original certificate cards.
+   CERTIFICATES – one full-screen certificate per snap screen
    ===================================================================== */
 
 .cert-screen {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   align-items: center;
-  gap: clamp(32px, 5vw, 80px);
+  gap: clamp(32px, 5vw, 88px);
 }
 
 /* ---------- Text side ---------- */
@@ -25,18 +24,16 @@
   object-fit: contain;
 }
 .cert-title {
-  margin: 0;
-  font-size: clamp(1.7rem, 3.2vw, 2.6rem);
+  font-size: clamp(1.7rem, 3.4vw, 2.8rem);
   font-weight: 800;
-  line-height: 1.2;
-  color: var(--text-main);
+  letter-spacing: -0.02em;
 }
 
 .cert-issuer {
   margin-bottom: 22px;
   font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--primary-color);
+  font-weight: 500;
+  color: var(--c2);
 }
 
 .cert-meta {
@@ -48,35 +45,34 @@
 .cert-meta dt {
   margin-bottom: 2px;
   font-size: 11.5px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--muted);
 }
 .cert-meta dd {
   font-size: 0.98rem;
-  font-weight: 600;
-  color: var(--text-main);
+  font-weight: 500;
+  color: var(--text);
 }
 
 .cert-desc {
   max-width: 520px;
   font-size: 1rem;
   line-height: 1.8;
-  color: var(--text-muted);
 }
 
 .cert-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
+  gap: 12px;
   margin-top: 30px;
 }
 .cert-actions .btn {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 13px 26px;
+  padding: 13px 24px;
   cursor: pointer;
 }
 
@@ -88,25 +84,25 @@
   justify-content: center;
   padding: 14px;
   cursor: zoom-in;
-  border-radius: 1.25rem;
-  background: var(--white);
-  border: 1px solid var(--card-border);
-  border-top: 5px solid var(--primary-color);
-  box-shadow: var(--card-shadow);
-  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+  border-radius: 18px;
+  background: rgba(var(--fg-rgb), 0.04);
+  border: 1px solid var(--line);
+  box-shadow: 0 30px 70px -30px rgba(var(--shadow-rgb), calc(0.8 * var(--shadow-k)));
+  transition: transform 0.5s var(--ease), border-color 0.3s, box-shadow 0.5s var(--ease);
 }
 .cert-preview:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-6px);
+  border-color: rgba(var(--c1-rgb), 0.55);
+  box-shadow: 0 40px 80px -30px rgba(var(--c1-rgb), calc(0.45 * var(--glow-k)));
 }
 .cert-preview img {
   display: block;
   width: auto;
   height: auto;
   max-width: 100%;
-  max-height: min(60vh, 600px);
-  max-height: min(60svh, 600px);
-  object-fit: contain; /* never stretched or cropped - landscape and portrait both fit */
+  max-height: min(62vh, 620px);
+  max-height: min(62svh, 620px);
+  object-fit: contain; /* never stretched or cropped – works for landscape and portrait */
   border-radius: 8px;
 }
 
@@ -122,3 +118,7 @@
   .cert-actions .btn { padding: 12px 20px; font-size: 14px; }
   .cert-badge { width: 48px; height: 48px; }
 }
+
+
+/* ===== animated accents ===== */
+.cert-badge { animation: float 5s ease-in-out infinite; }

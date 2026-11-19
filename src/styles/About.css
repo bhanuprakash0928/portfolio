@@ -1,122 +1,198 @@
-/* ================= COLOR PALETTE & VARIABLES ================= */
-/* Use these variables in your future sections to keep the design consistent */
-:root {
-  --primary-color: #6366f1; /* Modern Tech Indigo */
-  --secondary-color: #8b5cf6; /* Modern Vibrant Violet */
-  --bg-gradient: linear-gradient(135deg, #f8fbff 0%, #e0e7ff 100%);
-  --text-main: #0f172a;
-  --text-muted: #475569;
-  --white: #ffffff;
-}
+/* =====================================================================
+   HERO  -  text on the left, profile photo on the right
+   ===================================================================== */
 
-/* ================= HERO SECTION ================= */
 .hero {
-  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 120px 8% 80px;
-  background: var(--bg-gradient);
-  overflow: hidden; /* Prevents animation overflow */
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 128px 8% 80px;
+  overflow: hidden;
 }
 
 .hero-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
   align-items: center;
-  justify-content: space-between;
-  gap: 80px;
+  gap: clamp(36px, 5vw, 80px);
   width: 100%;
   max-width: 1300px;
 }
 
-/* ================= LEFT SIDE TEXT ================= */
-.hero-text {
-  flex: 1;
-}
+/* ---------- Left ---------- */
 
-.badge {
-  display: inline-block;
-  padding: 10px 22px;
-  background: rgba(99, 102, 241, 0.15);
-  color: var(--primary-color);
-  border-radius: 40px;
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 25px;
+.hero-text { min-width: 0; text-align: left; }
+
+/* staggered fade-up on load */
+.hero-text > * { animation: revealUp 0.9s var(--ease) backwards; }
+.hero-text > :nth-child(1) { animation-delay: 0.10s; }
+.hero-text > :nth-child(2) { animation-delay: 0.25s; }
+.hero-text > :nth-child(3) { animation-delay: 0.50s; }
+.hero-text > :nth-child(4) { animation-delay: 0.70s; }
+.hero-text > :nth-child(5) { animation-delay: 0.85s; }
+
+.hero-text .badge {
+  margin-bottom: 24px;
+  font-size: 12px;
+  line-height: 1.6;
+  text-transform: none;
   letter-spacing: 0.5px;
-  backdrop-filter: blur(5px); /* Modern glassmorphism touch */
 }
 
 .hero-text h1 {
-  font-size: 56px;
+  margin-bottom: 20px;
+  font-size: clamp(2rem, 3.6vw, 3.2rem);
   font-weight: 800;
-  line-height: 1.2;
-  color: var(--text-main);
-  margin-bottom: 15px;
+  letter-spacing: -0.03em;
 }
+
+/* typing effect (27 characters) */
+.typing-name { margin-top: 6px; }
+.typing-name span {
+  display: inline-block;
+  max-width: 100%;
+  width: 0;
+  padding-right: 4px;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: clamp(1.2rem, 3vw, 2.5rem);
+  font-weight: 800;
+  color: transparent;
+  background: linear-gradient(100deg, var(--text-strong) 5%, var(--c2) 35%, var(--c1) 65%, var(--c3));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  border-right: 3px solid var(--c2);
+  animation: typing 3.2s steps(27, end) 0.9s forwards, blink 0.8s step-end infinite,
+    caretOff 0.01s linear 4.3s forwards, gradientText 8s linear infinite;
+}
+@keyframes typing { from { width: 0; } to { width: 100%; } }
+@keyframes blink { 50% { border-color: transparent; } }
+@keyframes caretOff { to { border-color: transparent; } }
 
 .hero-text p {
-  font-size: 18px;
-  color: var(--text-muted);
-  line-height: 1.8;
-  max-width: 580px;
-  margin-bottom: 40px;
+  max-width: 600px;
+  margin-bottom: 36px;
+  font-size: 1.05rem;
+  line-height: 1.85;
 }
 
-/* ================= BUTTONS ================= */
-.hero-buttons {
-  display: flex;
-  gap: 20px;
+.hero-buttons { display: flex; flex-wrap: wrap; gap: 16px; }
+
+.hero-social { display: flex; gap: 12px; margin-top: 26px; }
+.hero-social a {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  font-size: 18px;
+  color: var(--text);
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(10px);
+  transition: transform 0.4s var(--ease), background 0.3s, box-shadow 0.4s;
 }
+.hero-social a:hover {
+  background: var(--c1);
+  transform: translateY(-5px);
+  box-shadow: 0 14px 28px -8px rgba(var(--c1-rgb), calc(0.8 * var(--glow-k)));
+}
+
+/* ---------- Buttons (shared across the site) ---------- */
 
 .btn {
-  padding: 15px 34px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
   display: inline-block;
+  padding: 14px 32px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 999px;
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), background 0.3s, border-color 0.3s;
 }
-
 .btn-primary {
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-  color: var(--white);
-  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+  color: var(--on-accent);
+  text-shadow: var(--btn-text-shadow);
+  background: linear-gradient(100deg, var(--c1), var(--c3), var(--c2), var(--c1));
+  background-size: 300% 100%;
+  box-shadow: 0 14px 34px -10px rgba(var(--c1-rgb), calc(0.7 * var(--glow-k)));
+  animation: flowX 7s ease infinite;
 }
-
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 50%; height: 100%;
+  background: linear-gradient(110deg, transparent, rgba(255, 255, 255, 0.42), transparent);
+  transform: skewX(-20deg);
+  animation: shine 3.8s ease-in-out infinite;
+  pointer-events: none;
+}
 .btn-primary:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(99, 102, 241, 0.4);
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 22px 44px -10px rgba(var(--c3-rgb), calc(0.6 * var(--glow-k)));
 }
-
 .btn-outline {
-  border: 2px solid var(--primary-color);
-  color: var(--primary-color);
-  background: transparent;
+  color: var(--text-strong);
+  background: var(--surface);
+  border: 1.5px solid rgba(var(--fg-rgb), 0.24);
+  backdrop-filter: blur(10px);
 }
-
 .btn-outline:hover {
-  background: var(--primary-color);
-  color: var(--white);
-  transform: translateY(-5px);
+  transform: translateY(-4px) scale(1.03);
+  border-color: var(--c2);
+  box-shadow: 0 0 30px rgba(var(--c2-rgb), calc(0.3 * var(--glow-k)));
 }
 
-/* ================= RIGHT SIDE IMAGE ================= */
+/* ---------- Right: profile photo ---------- */
+
 .hero-image {
-  flex: 1;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  animation: revealUp 1s var(--ease) 0.4s backwards;
 }
 
-/* Added a gradient ring behind the image */
 .image-wrapper {
   position: relative;
-  width: 400px;
-  height: 400px;
+  width: min(400px, 80vw);
+  aspect-ratio: 1;
   border-radius: 50%;
-  padding: 8px;
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-  box-shadow: 0 20px 50px rgba(99, 102, 241, 0.25);
+  isolation: isolate;
+  animation: float 6.5s ease-in-out infinite; /* gentle floating */
+}
+
+/* gradient ring */
+.image-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  z-index: 2;
+  padding: 4px;
+  border-radius: 50%;
+  background: conic-gradient(from var(--angle), var(--c1), var(--c2), var(--c3), var(--c1));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  animation: spinAngle 7s linear infinite;
+}
+/* breathing glow (opacity/scale only = cheap) */
+.image-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: -34px;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(var(--c1-rgb), 0.55), rgba(var(--c2-rgb), 0.22) 55%, transparent 72%);
+  animation: glowBreath 4.5s ease-in-out infinite;
+}
+@keyframes glowBreath {
+  0%, 100% { scale: 0.94; opacity: 0.55; }
+  50%      { scale: 1.08; opacity: 0.95; }
 }
 
 .hero-image img {
@@ -124,270 +200,44 @@
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
-  border: 6px solid var(--white);
-  transition: transform 0.4s ease;
+  border: 8px solid var(--bg);
+  transition: transform 0.7s var(--ease);
 }
+.hero-image img:hover { transform: scale(1.04); }
 
-.hero-image img:hover {
-  transform: scale(1.05) rotate(2deg);
-}
-
-/* ================= ANIMATIONS ================= */
-
-/* 1. Fade In Up (For the text block) */
-.fade-in-up {
-  animation: fadeInUp 1s ease-out forwards;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* 2. Floating Animation (For the image) */
-.float-anim {
-  animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-  100% { transform: translateY(0px); }
-}
-
-/* 3. Typing Animation (Fixed to work smoothly) */
-.typing-name span {
-  display: inline-block;
-  font-size: 56px;
-  font-weight: 800;
-  /* Adds a gradient to your text */
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 4px solid var(--primary-color);
-  width: 0;
-  animation: typing 3s steps(27, end) forwards, blink 0.8s infinite;
-}
-
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-@keyframes blink {
-  50% { border-color: transparent; }
-}
-
-/* ================= MOBILE RESPONSIVENESS ================= */
-@media (max-width: 1099px) {
-  .hero-container {
-    flex-direction: column-reverse;
-    text-align: center;
-    gap: 50px;
-  }
-  
-  .hero-text p {
-    margin: 0 auto 35px auto;
-  }
-  
-  .hero-buttons {
-    justify-content: center;
-  }
-  
-  .image-wrapper {
-    width: 300px;
-    height: 300px;
-  }
-  
-  .hero-text h1, .typing-name span {
-    font-size: 44px;
-  }
-}
-
-@media (max-width: 576px) {
-  .hero {
-    padding: 110px 20px 60px;
-  }
-  
-  /* Shrunk the font slightly more on mobile so the typing effect doesn't break to a new line */
-  .hero-text h1 {
-    font-size: 28px;
-  }
-  
-  .typing-name span {
-    font-size: 28px;
-  }
-  
-  .hero-text p {
-    font-size: 16px;
-  }
-  
-  .hero-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .btn {
-    width: 100%;
-    max-width: 250px;
-    text-align: center;
-  }
-  
-  .image-wrapper {
-    width: 230px;
-    height: 230px;
-  }
-}
-
-/* =====================================================================
-   THREE-PART LAYOUT:  intro (left)  |  About Me (middle)  |  photo (right)
-   Everything above is the original design; this block only adds the middle
-   column, the social icons and the location chip.
-===================================================================== */
-
-.hero-text { min-width: 0; }
-
-/* --- social icons under the buttons --- */
-.hero-social {
-  display: flex;
-  gap: 12px;
-  margin-top: 24px;
-}
-.hero-social a {
-  display: grid;
-  place-items: center;
-  width: 42px;
-  height: 42px;
-  font-size: 17px;
-  color: var(--text-muted);
-  background: var(--white);
-  border: 1px solid rgba(99, 102, 241, 0.2);
-  border-radius: 50%;
-  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.1);
-  transition: all 0.3s ease;
-}
-.hero-social a:hover {
-  color: var(--white);
-  background: var(--primary-color);
-  transform: translateY(-4px);
-}
-
-/* --- middle: About Me --- */
-.about-me {
-  flex: 1.2;
-  min-width: 0;
-  padding: 6px 40px;
-  text-align: left;
-  border-left: 1px solid rgba(99, 102, 241, 0.2);
-  border-right: 1px solid rgba(99, 102, 241, 0.2);
-  animation: fadeInUp 1s ease-out 0.3s both;
-}
-.about-me-label {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--primary-color);
-}
-.about-me h2 {
-  margin: 0 0 22px;
-  font-size: 44px;
-  font-weight: 800;
-  line-height: 1.15;
-  color: var(--text-main);
-}
-.about-me h2::after {
-  content: "";
-  display: block;
-  width: 60px;
-  height: 4px;
-  margin-top: 14px;
-  border-radius: 4px;
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-}
-.about-me p {
-  font-size: 16.5px;
-  line-height: 1.9;
-  color: var(--text-muted);
-}
-
-/* --- right: photo + location --- */
-.hero-image {
-  flex-direction: column;
-  align-items: center;
-  gap: 26px;
-}
 .location-chip {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 22px;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--text-main);
-  background: var(--white);
-  border: 1px solid rgba(99, 102, 241, 0.18);
-  border-radius: 40px;
-  box-shadow: 0 8px 22px rgba(99, 102, 241, 0.15);
+  padding: 10px 20px;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--text);
+  border-radius: 999px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(10px);
 }
-.location-chip svg {
-  color: var(--primary-color);
-  font-size: 16px;
-}
+.location-chip svg { color: var(--c2); font-size: 15px; }
 
-/* --- desktop: three columns (smaller type so the name never clips) --- */
-@media (min-width: 1100px) {
-  .hero { padding-left: 5%; padding-right: 5%; }
-  .hero-container { gap: 48px; max-width: 1400px; }
-  .hero-text { flex: 1.05; }
-  .hero-image { flex: 0.7; }
+/* ---------- Tablet / mobile: stack vertically ---------- */
 
-  .hero-text h1 { font-size: 40px; }
-  .typing-name span { font-size: clamp(20px, 1.75vw, 28px); }
-  .hero-text p { font-size: 16px; margin-bottom: 32px; }
-
-  .image-wrapper {
-    width: 100%;
-    max-width: 340px;
-    height: auto;
-    aspect-ratio: 1 / 1;
-  }
-}
-
-/* --- tablet / mobile: photo, intro, About Me stacked --- */
-@media (max-width: 1099px) {
-  .hero-container { max-width: 760px; flex-direction: column; } /* photo (order -1) -> intro -> About Me */
+@media (max-width: 992px) {
+  .hero-container { grid-template-columns: 1fr; gap: 48px; max-width: 720px; }
   .hero-image { order: -1; }
-  .hero-text, .about-me { flex: none; width: 100%; }
-  .about-me {
-    padding: 36px 0 0;
-    border-left: 0;
-    border-right: 0;
-    border-top: 1px solid rgba(99, 102, 241, 0.2);
-  }
-  .about-me h2 { font-size: 34px; }
-  .hero-social { justify-content: center; }
+  .image-wrapper { width: min(300px, 68vw); }
+  .hero-text { text-align: center; }
+  .hero-text p { margin-left: auto; margin-right: auto; }
+  .hero-buttons, .hero-social { justify-content: center; }
+  /* the name is ~14.4x its font size wide: size it to the available width */
+  .typing-name span { font-size: min(44px, calc((84vw - 12px) / 14.6)); }
 }
 
 @media (max-width: 576px) {
-  .about-me h2 { font-size: 28px; }
-  .about-me p { font-size: 15.5px; line-height: 1.8; }
-}
-
-/* --- keep the typed name inside the screen on tablets and phones --- */
-@media (max-width: 1099px) {
-  .typing-name span { font-size: min(44px, 6vw); }
-}
-@media (max-width: 576px) {
-  .typing-name span { font-size: min(28px, 6.4vw); }
+  .hero { padding: 112px 20px 56px; }
+  .hero-text h1 { font-size: 1.9rem; }
+  .typing-name span { font-size: min(28px, calc((100vw - 52px) / 14.6)); }
+  .hero-text p { font-size: 1rem; }
+  .hero-buttons .btn { flex: 1 1 100%; text-align: center; }
+  .image-wrapper { width: min(250px, 66vw); }
 }

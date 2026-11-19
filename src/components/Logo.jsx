@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-/** YB monogram in the original round logo badge + name. Used in the navbar. */
+/** YB monogram + full name. The single logo implementation used by the navbar. */
 function Logo({ onClick }) {
   return (
     <Link
@@ -9,10 +9,10 @@ function Logo({ onClick }) {
       onClick={onClick}
       aria-label="Yettapu Bhanu Prakash Reddy – back to top"
     >
-      <span className="logo-box">
-        <img src="/logo-yb.png" alt="" width="28" height="24" />
+      <span className="logo-mark">
+        <img src="/logo-yb.png" alt="" width="26" height="22" />
       </span>
-      <h2>Bhanu Prakash Reddy</h2>
+      <span className="logo-name">Yettapu Bhanu Prakash Reddy</span>
     </Link>
   );
 }
